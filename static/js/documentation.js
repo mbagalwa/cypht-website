@@ -66,8 +66,9 @@ const init_image_preview = () => {
   const overlayImg = overlay.querySelector(".doc-img-overlay-img");
   const closeBtn = overlay.querySelector(".doc-img-overlay-close");
 
-  // Click on any doc-img-card image to open preview
-  document.querySelectorAll(".doc-img-card img").forEach((img) => {
+  // Click on any doc-img-card image to open preview. Markdown pages have no
+  // card wrapper: their images sit directly in the body.
+  document.querySelectorAll(".doc-img-card img, .doc-md img").forEach((img) => {
     img.style.cursor = "zoom-in";
     img.addEventListener("click", () => {
       overlayImg.src = img.src;

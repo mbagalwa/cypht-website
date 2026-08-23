@@ -34,6 +34,87 @@ rm data/configOptions.json
 php data/fetch.php  # alt: make
 ```
 
+### Write a documentation page in Markdown
+
+Documentation and integration pages can be written as plain Markdown, with no HTML in the file. Add `format: md` to the
+front matter and the layout builds the rest: page title, section separators, the "On this page" navigation and the
+previous/next cards.
+
+~~~markdown
+---
+title: Cypht on YunoHost
+description: "Shown in the page metadata."
+layout: section/integration
+format: md
+nav_prev:
+  label: Cloudron
+  url: /integration/cloudron
+nav_next:
+  label: Tiki
+  url: /integration/tiki
+---
+
+## Overview {#overview}
+
+A paragraph with a [link](https://example.com); external links open in a new tab.
+
+:::info
+**A callout.** Variants: `:::info`, `:::tip`, `:::warning`, `:::danger`.
+:::
+
+:::grid
+- **A card**
+  Its title is the leading bold, the rest of the item is its text.
+- **Another card**
+  A card can hold a nested list, a screenshot, and close on a link that becomes its button.
+:::
+
+![Alt text](/img/integration/tiki-webmail.webp "A caption turns the image into a screenshot card.")
+
+## Install it {#install}
+
+```bash
+sudo yunohost app install cypht
+```
+
+:::actions
+[A link rendered as a button](/install)
+:::
+
+A term
+: and its definition, for option and setting references.
+~~~
+
+Things worth knowing:
+
+- Every `##` becomes a section, with the dashed separator and an entry in the right-hand navigation. `###` is a
+  sub-section: styled, anchored, but kept out of the navigation.
+- `{#custom-id}` after a heading keeps a specific anchor. Without it the id is derived from the title, so use it when
+  migrating a page that already has links pointing at its sections.
+- `toc_labels` maps an anchor to a shorter navigation label, for sections whose title is too long for the column.
+- Fenced code blocks get the terminal card and its copy button, including inside a list item. Images get the
+  click-to-zoom preview, and a `"title"` after the URL turns one into a captioned card.
+- `:::grid` lays its list out as cards, two columns at most, with an odd last card filling its row so a grid never
+  leaves a hole. `:::grid-sm` is the same with a tighter gutter. `:::actions` turns its links into buttons.
+- **A `:::` block holds a single paragraph and no nested list.** Cecil strips both the blank lines and the leading
+  indentation of the lines it collects, so a callout needing two paragraphs has to become two blocks, and a card
+  needing a bullet list has to move out of the grid, as a `**bold**` lead followed by an ordinary list.
+- `nav_prev`/`nav_next` are used instead of `prev`/`next`, which Cecil reserves for its own section navigation.
+- A page with `redirect:` borrows the body of another page and renders it with the same chrome, whatever its format.
+
+Where the styling lives:
+
+- [static/assets/css/doc/tokens.css](static/assets/css/doc/tokens.css): the type scale, the vertical rhythm, the card
+  and icon definitions. **Change a value here and every documentation page follows**, whichever format it uses. Icons
+  are masked SVG declared as `--doc-icon-*` tokens, so they need no icon font and work in both themes.
+- [static/assets/css/doc/markdown.css](static/assets/css/doc/markdown.css): maps the tags Cecil generates onto those
+  tokens.
+- [static/assets/css/doc/documentation.css](static/assets/css/doc/documentation.css): the same tokens, for the pages
+  still written in HTML.
+- [layouts/partials/doc_markdown.html.twig](layouts/partials/doc_markdown.html.twig): the page shell.
+
+Pages without `format: md` keep their hand-written HTML, so both formats can coexist during a migration.
+
 ## Explanation
 
 ### cypht-config-generator-generator

@@ -3,141 +3,107 @@ id: 14
 title: Reporting Bugs
 description: "Learn how to report bugs in Cypht effectively. Follow our bug reporting guidelines to provide useful details and help the team fix issues quickly."
 layout: section/documentation
+format: md
+toc_labels:
+  overview: Bug Reporting Overview
+  before_reporting: Before Reporting
+  security_issues: Security Issues
+  reporting_channels: Reporting Channels
+  bug_report_template: Report Template
+  feature_requests: Feature Requests
+nav_prev:
+  label: Dev Docs
+  url: /documentation/dev-docs
+nav_next:
+  label: Join Community
+  url: /documentation/join-community
 ---
 
-<div class="doc-content-left col mx-xl-3">
-    <div class="doc-page-header">
-        <h3>Reporting Bugs</h3>
-    </div>
+## Bug Reporting Overview {#overview}
 
-    <div id="overview" class="doc-section">
-        <div class="doc-section-header">
-            <a href="#overview">Bug Reporting Overview</a>
-        </div>
-        <span class="doc-section-text">
-            Help us improve Cypht by reporting bugs and issues you encounter. Your feedback is essential for maintaining the quality and reliability of this Open Source email client.
-        </span>
-        <span class="doc-section-text">
-            Cypht is an entirely volunteer effort, and we rely on community contributions to identify and fix issues. Every bug report helps make Cypht better for everyone.
-        </span>
-    </div>
+Help us improve Cypht by reporting bugs and issues you encounter. Your feedback is essential for maintaining the
+quality and reliability of this Open Source email client.
 
-    <div id="before_reporting" class="doc-section">
-        <div class="doc-section-header">
-            <a href="#before_reporting">Before Reporting</a>
-        </div>
-        <span class="doc-section-text">
-            Follow these steps to ensure your bug report is effective and helps us resolve the issue quickly.
-        </span>
+Cypht is an entirely volunteer effort, and we rely on community contributions to identify and fix issues. Every bug
+report helps make Cypht better for everyone.
 
-        <div class="doc-subsection-header">
-            <a href="#check_existing">Check Existing Issues</a>
-        </div>
-        <p>Before creating a new report, search the <a href="https://github.com/cypht-org/cypht/issues" target="_blank" class="text-link">GitHub issues</a> to see if the bug has already been reported.</p>
+## Before Reporting {#before_reporting}
 
-        <div class="doc-subsection-header">
-            <a href="#reproduce_issue">Reproduce the Issue</a>
-        </div>
-        <p>Try to reproduce the bug consistently. Note the exact steps that trigger the problem and any patterns you observe.</p>
+Follow these steps to ensure your bug report is effective and helps us resolve the issue quickly.
 
-        <div class="doc-subsection-header">
-            <a href="#gather_info">Gather System Information</a>
-        </div>
-        <p>Collect relevant details about your environment that might help diagnose the problem.</p>
+### Check Existing Issues {#check_existing}
 
-        <div class="doc-grid-content">
-            <div class="">
-                <div class="feature-card h-100">
-                    <h6><i class="bi bi-info-circle"></i> Helpful Information</h6>
-                    <ul>
-                        <li>Cypht version</li>
-                        <li>PHP version</li>
-                        <li>Web server (Apache/Nginx)</li>
-                        <li>Browser and version</li>
-                        <li>Operating system</li>
-                        <li>Email provider(s) affected</li>
-                    </ul>
-                </div>
-            </div>
-            <div class="">
-                <div class="feature-card h-100">
-                    <h6><i class="bi bi-clock"></i> When to Report</h6>
-                    <p>Report issues that are reproducible and affect functionality. Minor UI improvements or feature requests should use the contribution guidelines instead.</p>
-                </div>
-            </div>
-        </div>
-    </div>
+Before creating a new report, search the [GitHub issues](https://github.com/cypht-org/cypht/issues) to see if the bug
+has already been reported.
 
-    <div id="security_issues" class="doc-section">
-        <div class="doc-section-header">
-            <a href="#security_issues">Security Issues</a>
-        </div>
-        <span class="doc-section-text">
-            We take security seriously. If you discover a security vulnerability, please report it responsibly.
-        </span>
+### Reproduce the Issue {#reproduce_issue}
 
-        <div class="tip-card tip-warning">
-            <span class="tip-warning-text"><i class="bi bi-shield-exclamation"></i> Security Reporting</span>
-            <p class="mb-0">For security issues, <strong>do not</strong> use public GitHub issues. Instead, report them privately through our security channels.</p>
-        </div>
+Try to reproduce the bug consistently. Note the exact steps that trigger the problem and any patterns you observe.
 
-        <div class="doc-subsection-header">
-            <a href="#how_to_report_security">How to Report Security Issues</a>
-        </div>
-        <ol>
-            <li>Visit the <a href="https://www.cypht.org/security" target="_blank" class="text-link">Cypht Security page</a></li>
-            <li>Follow the private reporting instructions</li>
-            <li>Provide detailed information about the vulnerability</li>
-            <li>Include steps to reproduce if possible</li>
-        </ol>
+### Gather System Information {#gather_info}
 
-        <div class="tip-card tip-info mt-3">
-            <span class="tip-info-text"><i class="bi bi-award"></i> Security Recognition</span>
-            <p>Security issues reported before release receive a quick response, thorough review, sincere thanks, and honorable mention on our security page.</p>
-        </div>
-    </div>
+Collect relevant details about your environment that might help diagnose the problem.
 
-    <div id="reporting_channels" class="doc-section">
-        <div class="doc-section-header">
-            <a href="#reporting_channels">Reporting Channels</a>
-        </div>
-        <span class="doc-section-text">
-            Choose the appropriate channel based on your issue type and urgency.
-        </span>
+**Helpful Information**
 
-        <div class="doc-grid-content">
-            <div class="">
-                <div class="feature-card h-100">
-                    <h6><i class="bi bi-github"></i> GitHub Issues</h6>
-                    <p><strong>Best for:</strong> Bug reports, feature requests, technical issues</p>
-                    <p>Submit detailed issues with reproduction steps and system information.</p>
-                    <a href="https://github.com/cypht-org/cypht/issues" target="_blank" class="doc-btn-card btn-sm btn-success mt-2">Submit Issue</a>
-                </div>
-            </div>
-            <div class="">
-                <div class="feature-card h-100">
-                    <h6><i class="bi bi-chat-dots"></i> Gitter Chat</h6>
-                    <p><strong>Best for:</strong> Quick questions, general discussions, community support</p>
-                    <p>Real-time chat with developers and community members.</p>
-                    <a href="https://gitter.im/cypht-org/community" target="_blank" class="doc-btn-card btn-sm mt-2">Join Chat</a>
-                </div>
-            </div>
-        </div>
-    </div>
+- Cypht version
+- PHP version
+- Web server (Apache/Nginx)
+- Browser and version
+- Operating system
+- Email provider(s) affected
 
-    <div id="bug_report_template" class="doc-section">
-        <div class="doc-section-header">
-            <a href="#bug_report_template">Bug Report Template</a>
-        </div>
-        <span class="doc-section-text">
-            Use this template to ensure your bug report includes all necessary information for effective troubleshooting.
-        </span>
+**When to Report**
 
-        <div class="doc-subsection-header">
-            <a href="#issue_description">Issue Description</a>
-        </div>
-        <p>Provide a clear and concise description of the problem:</p>
-        <pre><code class="code-bash">**Bug Description**
+Report issues that are reproducible and affect functionality. Minor UI improvements or feature requests should use the
+contribution guidelines instead.
+
+## Security Issues {#security_issues}
+
+We take security seriously. If you discover a security vulnerability, please report it responsibly.
+
+:::warning
+**Security Reporting.** For security issues, **do not** use public GitHub issues. Instead, report them privately
+through our security channels.
+:::
+
+### How to Report Security Issues {#how_to_report_security}
+
+1. Visit the [Cypht Security page](https://www.cypht.org/security)
+2. Follow the private reporting instructions
+3. Provide detailed information about the vulnerability
+4. Include steps to reproduce if possible
+
+:::info
+**Security Recognition.** Security issues reported before release receive a quick response, thorough review, sincere
+thanks, and honorable mention on our security page.
+:::
+
+## Reporting Channels {#reporting_channels}
+
+Choose the appropriate channel based on your issue type and urgency.
+
+:::grid
+- **GitHub Issues**
+  **Best for :** Bug reports, feature requests, technical issues. Submit detailed issues with reproduction steps and
+  system information.
+  [Submit Issue](https://github.com/cypht-org/cypht/issues)
+- **Gitter Chat**
+  **Best for :** Quick questions, general discussions, community support. Real-time chat with developers and community
+  members.
+  [Join Chat](https://gitter.im/cypht-org/community)
+:::
+
+## Bug Report Template {#bug_report_template}
+
+Use this template to ensure your bug report includes all necessary information for effective troubleshooting.
+
+### Issue Description {#issue_description}
+
+Provide a clear and concise description of the problem :
+
+```text
+**Bug Description**
 
 A clear and brief description of what the bug is.
 
@@ -145,100 +111,61 @@ A clear and brief description of what the bug is.
 What you expected to happen.
 
 **Actual Behavior**
-What actually happened instead.</code></pre>
+What actually happened instead.
+```
 
-        <div class="doc-subsection-header">
-            <a href="#reproduction_steps">Steps to Reproduce</a>
-        </div>
-        <pre><code class="code-bash">**To Reproduce**
+### Steps to Reproduce {#reproduction_steps}
+
+```text
+**To Reproduce**
 
 1.  Go to '...'
 2.  Click on '....'
 3.  Scroll down to '....'
-4.  See error</code></pre>
+4.  See error
+```
 
-        <div class="doc-subsection-header">
-            <a href="#environment_info">Environment Information</a>
-        </div>
-        <pre><code class="code-bash">**Environment**
+### Environment Information {#environment_info}
+
+```text
+**Environment**
 
 - Cypht version: [e.g., 1.3.0]
 - PHP version: [e.g., 8.1.0]
 - Web server: [e.g., Apache 2.4.41]
 - Database: [e.g., MySQL 8.0]
 - Browser: [e.g., Chrome 91.0]
-- OS: [e.g., Ubuntu 20.04]</code></pre>
+- OS: [e.g., Ubuntu 20.04]
+```
 
-        <div class="doc-subsection-header">
-            <a href="#additional_context">Additional Context</a>
-        </div>
-        <p>Include any additional information that might help:</p>
-        <ul>
-            <li>Screenshots or screen recordings</li>
-            <li>Error messages from logs</li>
-            <li>Browser console errors</li>
-            <li>Network requests that failed</li>
-            <li>Recent changes to your setup</li>
-        </ul>
+### Additional Context {#additional_context}
 
-    </div>
+Include any additional information that might help :
 
-    <div id="feature_requests" class="doc-section">
-        <div class="doc-section-header">
-            <a href="#feature_requests">Feature Requests</a>
-        </div>
-        <span class="doc-section-text">
-            Have an idea for improving Cypht? We'd love to hear your suggestions!
-        </span>
+- Screenshots or screen recordings
+- Error messages from logs
+- Browser console errors
+- Network requests that failed
+- Recent changes to your setup
 
-        <div class="doc-subsection-header">
-            <a href="#request_guidelines">Request Guidelines</a>
-        </div>
-        <ul>
-            <li>Check if the feature already exists or is planned</li>
-            <li>Explain the problem your feature would solve</li>
-            <li>Describe the proposed solution clearly</li>
-            <li>Consider if it fits Cypht's modular design</li>
-            <li>Be open to discussion and feedback</li>
-        </ul>
+## Feature Requests {#feature_requests}
 
-        <div class="tip-card tip-info mt-3">
-            <span class="tip-info-text"><i class="bi bi-lightbulb"></i> Contribution Welcome</span>
-            <p class="mb-0">The best way to get a feature implemented is often to contribute it yourself! Check our <a href="/documentation/dev-docs">developer documentation</a> to get started.</p>
-        </div>
+Have an idea for improving Cypht? We'd love to hear your suggestions!
 
-    </div>
-    <div class="doc-section">
-        <h6><i class="bi bi-heart me-2"></i> Thank You!</h6>
-        <p>Whether you're reporting a bug, suggesting a feature, or contributing code, your involvement helps make Cypht better for everyone. We appreciate your support!</p>
-    </div>
+### Request Guidelines {#request_guidelines}
 
-  <nav-pagination
-        prev-label="Dev Docs"
-        prev-url="/documentation/dev-docs"
-        next-label="Join Community"
-        next-url="/documentation/join-community">
-  </nav-pagination>
+- Check if the feature already exists or is planned
+- Explain the problem your feature would solve
+- Describe the proposed solution clearly
+- Consider if it fits Cypht's modular design
+- Be open to discussion and feedback
 
-</div>
+:::info
+**Contribution Welcome.** The best way to get a feature implemented is often to contribute it yourself! Check our
+[developer documentation](/documentation/dev-docs) to get started.
+:::
 
-<div class="doc-content-right d-none d-xl-flex col-xl-2">
-    <div class="dc-ctr-content">
-        <div class="dc-ctr-header">
-            <p class="dc-ctr-header-title">
-                <svg aria-hidden="true" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M4 5h12M4 12h16M4 19h8" color="currentColor"/></svg>
-                On this page
-            </p>
-        </div>
-        <nav>
-            <ul id="dc-ctr-nav">
-                <li><a href="#overview" class="active">Bug Reporting Overview</a></li>
-                <li><a href="#before_reporting">Before Reporting</a></li>
-                <li><a href="#security_issues">Security Issues</a></li>
-                <li><a href="#reporting_channels">Reporting Channels</a></li>
-                <li><a href="#bug_report_template">Report Template</a></li>
-                <li><a href="#feature_requests">Feature Requests</a></li>
-            </ul>
-        </nav>
-    </div>
-</div>
+## Thank You! {#thank_you}
+
+Whether you're reporting a bug, suggesting a feature, or contributing code, your involvement helps make Cypht better
+for everyone. We appreciate your support!

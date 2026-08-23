@@ -1,0 +1,606 @@
+/* .doc-content-left is a flex column of hand-written `.doc-section` blocks; a
+   Markdown body is a flat stream of tags, so it lays out as a normal block and
+   the vertical rhythm comes from (collapsing) margins. */
+.doc-md.doc-content-left {
+      display: block;
+      gap: 0;
+}
+
+/* ─── Sections ───────────────────────────────────────────────────────────── */
+
+/* Headings are matched as direct children only: the page title is an <h3> of
+   `.doc-page-header`, which keeps the styling it has on the other pages. */
+
+.doc-md>h2 {
+      position: relative;
+      margin: var(--doc-section-gap) 0 var(--doc-heading-gap);
+      padding-top: var(--doc-section-pad);
+      border-top: var(--doc-rule);
+      font-size: var(--doc-title-size);
+      line-height: var(--doc-heading-line);
+      font-weight: var(--doc-heading-weight);
+      color: var(--color-text);
+      scroll-margin-top: var(--doc-anchor-offset);
+}
+
+/* First section: the page header already provides part of the space. */
+.doc-md>.doc-page-header+h2 {
+      margin-top: var(--doc-section-pad);
+}
+
+/* The `#` marker shown next to a hovered section title. */
+.doc-md>h2:hover::before {
+      content: "#";
+      position: absolute;
+      bottom: -0.23rem;
+      left: -1.4rem;
+      font-size: 1.3rem;
+      color: var(--color-primary);
+      transition: all 0.2s ease;
+}
+
+.doc-md>h3 {
+      margin: 1.75rem 0 0.75rem;
+      font-size: var(--doc-heading-size);
+      line-height: var(--doc-heading-line);
+      font-weight: var(--doc-heading-weight);
+      color: var(--color-text);
+      scroll-margin-top: var(--doc-anchor-offset);
+}
+
+.doc-md>h4 {
+      margin: 1.25rem 0 0.5rem;
+      font-size: var(--doc-text-size);
+      line-height: var(--doc-heading-line);
+      font-weight: var(--doc-heading-weight);
+      color: var(--color-text);
+      scroll-margin-top: var(--doc-anchor-offset);
+}
+
+/* ─── Body text ──────────────────────────────────────────────────────────── */
+
+.doc-md p,
+.doc-md li,
+.doc-md td,
+.doc-md th {
+      font-size: var(--doc-text-size);
+      font-weight: var(--doc-text-weight);
+      line-height: var(--doc-text-line);
+      color: var(--color-text);
+      opacity: .9;
+}
+
+.doc-md p {
+      margin: 0 0 var(--doc-block-gap);
+}
+
+/* Running text is capped at a comfortable measure; the column stays wide for
+   everything that needs the room. Only top-level blocks are capped, so text
+   nested in a card or a note keeps the width of its container. */
+.doc-md>p,
+.doc-md>ul,
+.doc-md>ol,
+.doc-md>dl,
+.doc-md>blockquote {
+      max-width: var(--doc-measure);
+}
+
+.doc-md strong {
+      font-weight: var(--doc-strong-weight);
+      color: var(--color-text);
+}
+
+.doc-md ul,
+.doc-md ol {
+      margin: 0 0 var(--doc-block-gap);
+      padding-left: var(--doc-list-indent);
+}
+
+/* A list inside another list steps in by less: the parent already set it in. */
+.doc-md li>ul,
+.doc-md li>ol {
+      padding-left: var(--doc-list-indent-nested);
+}
+
+.doc-md li+li,
+.doc-md li>ul,
+.doc-md li>ol {
+      margin-top: .3rem;
+}
+
+.doc-md li>ul,
+.doc-md li>ol {
+      margin-bottom: 0;
+}
+
+/* A list item holding a code block or several paragraphs: keep the item text
+   tight against what it introduces. */
+.doc-md li>p {
+      margin-bottom: .5rem;
+}
+
+.doc-md li>p:last-child {
+      margin-bottom: 0;
+}
+
+/* Same treatment as the inline links of the hand-written pages: primary colour
+   and an underline that only grows on hover. Scoped to the text tags so the
+   generated cards (pagination) keep their own styling. */
+.doc-md p a,
+.doc-md li a,
+.doc-md td a,
+.doc-md h2 a,
+.doc-md h3 a,
+.doc-md blockquote a,
+.doc-md figcaption a,
+.doc-md .note a {
+      color: var(--color-primary);
+      font-weight: var(--doc-link-weight);
+      text-decoration: none;
+      border-bottom: 1px solid transparent;
+      transition: all 0.2s ease;
+}
+
+.doc-md p a:hover,
+.doc-md li a:hover,
+.doc-md td a:hover,
+.doc-md h2 a:hover,
+.doc-md h3 a:hover,
+.doc-md blockquote a:hover,
+.doc-md figcaption a:hover,
+.doc-md .note a:hover {
+      color: var(--color-primary);
+      text-decoration: none;
+      border-bottom-color: var(--color-primary);
+}
+
+/* ─── Icons ──────────────────────────────────────────────────────────────── */
+
+/* Every icon of a Markdown page is a masked SVG taken from the token set: the
+   element picks the drawing with `--doc-icon` and tints it with its own colour.
+   No icon font, no extra request, and both themes are covered. */
+.doc-md .note::before,
+.doc-md figcaption::before {
+      content: "";
+      flex-shrink: 0;
+      width: var(--doc-icon-size);
+      height: var(--doc-icon-size);
+      background-color: currentColor;
+      -webkit-mask: var(--doc-icon) center / contain no-repeat;
+      mask: var(--doc-icon) center / contain no-repeat;
+}
+
+/* ─── Notes ──────────────────────────────────────────────────────────────── */
+.doc-md .note {
+      display: grid;
+      grid-template-columns: auto 1fr;
+      column-gap: var(--doc-card-gap);
+      align-items: start;
+      margin: var(--doc-block-gap) 0;
+      padding: var(--doc-card-pad);
+      border: var(--doc-card-border);
+      border-radius: var(--doc-card-radius);
+      background: var(--doc-card-bg);
+}
+
+.doc-md .note>* {
+      grid-column: 2;
+}
+
+.doc-md .note::before {
+      grid-column: 1;
+      grid-row: 1;
+      margin-top: 0.15rem;
+      color: var(--color-primary);
+      --doc-icon: var(--doc-icon-info);
+}
+
+/* Callout lists only. `.note-grid` shares the `note` class but its items are
+   cards, not secondary text: they keep the size and colour of the page body,
+   which the muted small text would drop below the AA contrast ratio. */
+.doc-md .note:not([class*="note-grid"]) ul,
+.doc-md .note:not([class*="note-grid"]) ol {
+      margin: .5rem 0 0;
+      padding-left: var(--doc-list-indent-nested);
+      font-size: var(--doc-small-size);
+}
+
+.doc-md .note:not([class*="note-grid"]) li {
+      font-size: var(--doc-small-size);
+      line-height: var(--doc-small-line);
+      color: var(--doc-card-text);
+}
+
+.doc-md .note> :last-child {
+      margin-bottom: 0;
+}
+
+.doc-md .note-tip::before {
+      --doc-icon: var(--doc-icon-tip);
+}
+
+.doc-md .note-warning::before {
+      color: var(--color-warning);
+      --doc-icon: var(--doc-icon-warning);
+}
+
+.doc-md .note-danger::before {
+      color: var(--color-error);
+      --doc-icon: var(--doc-icon-danger);
+}
+
+.doc-md .note p {
+      margin: 0;
+      font-size: var(--doc-small-size);
+      line-height: var(--doc-small-line);
+      color: var(--doc-card-text);
+      opacity: 1;
+}
+
+.doc-md .note p+p {
+      margin-top: 0.5rem;
+}
+
+.doc-md .note> :last-child {
+      margin-bottom: 0;
+}
+
+.doc-md blockquote {
+      margin: var(--doc-block-gap) 0;
+      padding-left: 1rem;
+      border-left: 3px solid var(--color-primary);
+      font-style: normal;
+}
+
+.doc-md blockquote> :last-child {
+      margin-bottom: 0;
+}
+
+/* ─── Card grids ─────────────────────────────────────────────────────────── */
+.doc-md .note-grid,
+.doc-md .note-grid-sm {
+      display: block;
+      margin: var(--doc-block-gap) 0;
+      padding: 0;
+      border: 0;
+      background: none;
+}
+
+.doc-md .note-grid::before,
+.doc-md .note-grid-sm::before {
+      content: none;
+}
+
+.doc-md .note-grid ul,
+.doc-md .note-grid-sm ul {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(var(--doc-grid-min), 1fr));
+      gap: var(--doc-grid-gap);
+      margin: 0;
+      padding: 0;
+      list-style: none;
+      align-items: stretch;
+}
+
+/* Both grids share the same column cap; `grid-sm` only tightens the gutter. */
+.doc-md .note-grid-sm ul {
+      gap: var(--doc-grid-sm-gap);
+}
+
+/* An odd card closing a grid fills its row instead of leaving a hole beside it,
+   so three cards read as 2 + 1 full width rather than 2 + a gap. */
+.doc-md .note-grid li:last-child:nth-child(odd),
+.doc-md .note-grid-sm li:last-child:nth-child(odd) {
+      grid-column: 1 / -1;
+}
+
+.doc-md .note-grid li,
+.doc-md .note-grid-sm li {
+      margin: 0;
+      padding: var(--doc-surface-pad);
+      border: var(--doc-surface-border);
+      border-radius: var(--doc-surface-radius);
+      background: var(--doc-surface-bg);
+      transition: border-color 0.2s ease;
+}
+
+/* Hover moves the border colour only: no shadow, no lift. */
+.doc-md .note-grid li:hover,
+.doc-md .note-grid-sm li:hover {
+      border-color: var(--doc-surface-hover-border);
+}
+
+/* A card separates its title from its text on three axes: size, weight and
+   colour. The description is muted, but at full opacity: stacking `opacity`
+   on top of the muted colour is what used to drop it under the AA ratio. */
+/* A card holding a screenshot wraps its description in a <p>, one without
+   leaves it as a bare text node: both have to land on the same treatment. */
+.doc-md .note-grid li,
+.doc-md .note-grid-sm li,
+.doc-md .note-grid li>p,
+.doc-md .note-grid-sm li>p {
+      font-size: var(--doc-small-size);
+      line-height: var(--doc-small-line);
+      color: var(--doc-card-text);
+      opacity: 1;
+}
+
+/* The leading bold of an item is its card title. */
+.doc-md .note-grid li>strong:first-child,
+.doc-md .note-grid-sm li>strong:first-child {
+      display: block;
+      margin-bottom: 0.5rem;
+      font-size: var(--doc-surface-title-size);
+      line-height: var(--doc-heading-line);
+      font-weight: var(--doc-strong-weight);
+      color: var(--color-text);
+      opacity: 1;
+}
+
+/* A nested list inside a card stays a plain list, not a second grid. */
+.doc-md .note-grid li ul,
+.doc-md .note-grid-sm li ul {
+      display: block;
+      margin: .4rem 0 0;
+      padding-left: var(--doc-list-indent-nested);
+      list-style: disc;
+}
+
+.doc-md .note-grid li li,
+.doc-md .note-grid-sm li li {
+      padding: 0;
+      border: 0;
+      border-radius: 0;
+      background: none;
+      font-size: var(--doc-small-size);
+}
+
+.doc-md .note-grid li li:hover,
+.doc-md .note-grid-sm li li:hover {
+      box-shadow: none;
+}
+
+/* A card closing on a link turns it into its call to action, the way the
+   hand-written cards ended on a `.doc-btn-card`. */
+.doc-md .note-grid li>a:last-child,
+.doc-md .note-grid-sm li>a:last-child {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      width: fit-content;
+      margin-top: 0.75rem;
+      padding: 0.25rem 1rem;
+      border: .5px solid var(--color-border);
+      border-radius: 5px;
+      font-size: var(--doc-small-size);
+      font-weight: var(--doc-strong-weight);
+      color: var(--color-text);
+      text-decoration: none;
+      transition: all .2s ease-in-out;
+}
+
+.doc-md .note-grid li>a:last-child:hover,
+.doc-md .note-grid-sm li>a:last-child:hover {
+      color: var(--color-primary);
+      border-color: var(--color-primary);
+}
+
+/* A screenshot dropped between the title and the text turns the card into an
+   illustrated one, like `.doc-img-card`. */
+.doc-md .note-grid li img,
+.doc-md .note-grid-sm li img {
+      display: block;
+      width: 100%;
+      height: auto;
+      margin: 0 0 0.6rem;
+      padding: 4px;
+      border-radius: var(--doc-card-radius);
+      background: var(--color-bg-secondary);
+      box-sizing: border-box;
+      cursor: zoom-in;
+}
+
+/* ─── Action links ───────────────────────────────────────────────────────── */
+
+/* `:::actions` turns the links it contains into buttons, the Markdown form of
+   the hand-written `.doc-btn-card`. */
+.doc-md .note-actions {
+      display: block;
+      margin: var(--doc-block-gap) 0;
+      padding: 0;
+      border: 0;
+      background: none;
+}
+
+.doc-md .note-actions::before {
+      content: none;
+}
+
+.doc-md .note-actions p {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.5rem;
+      margin: 0;
+}
+
+.doc-md .note-actions a {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      padding: 0.25rem 1rem;
+      border: .5px solid var(--color-border);
+      border-radius: 5px;
+      font-size: var(--doc-small-size);
+      font-weight: var(--doc-strong-weight);
+      color: var(--color-text);
+      text-decoration: none;
+      transition: all .2s ease-in-out;
+}
+
+.doc-md .note-actions a:hover {
+      color: var(--color-primary);
+      border-color: var(--color-primary);
+      scale: 1.02;
+}
+
+/* ─── Definition lists ───────────────────────────────────────────────────── */
+
+/* `Term` + `: definition` reads well for option and setting references. */
+.doc-md dl {
+      margin: 0 0 var(--doc-block-gap);
+      padding-left: .75rem;
+      border-left: var(--doc-card-border);
+}
+
+.doc-md dt {
+      font-size: var(--doc-text-size);
+      font-weight: var(--doc-strong-weight);
+      color: var(--color-text);
+}
+
+.doc-md dt+dd {
+      margin: .15rem 0 .6rem;
+}
+
+.doc-md dd {
+      margin-left: 0;
+      font-size: var(--doc-text-size);
+      line-height: var(--doc-text-line);
+      color: var(--doc-card-text);
+}
+
+.doc-md dd:last-child {
+      margin-bottom: 0;
+}
+
+/* ─── Code ───────────────────────────────────────────────────────────────── */
+
+.doc-md p>code,
+.doc-md li>code,
+.doc-md td>code {
+      font-family: var(--font-family-monospace);
+      font-size: var(--doc-code-size);
+      padding: 0.12rem 0.3rem;
+      border: var(--doc-card-border);
+      border-radius: 4px;
+      background: var(--color-bg-tertiary);
+      color: var(--color-text);
+}
+
+/* A terminal card inside a list item: keep it aligned with the item text. */
+.doc-md li>.code-preview-content {
+      margin-top: .5rem;
+      margin-bottom: 0;
+}
+
+/* ─── Figures (screenshot cards) ─────────────────────────────────────────── */
+
+.doc-md figure {
+      display: flex;
+      flex-direction: column;
+      gap: 0.75rem;
+      margin: var(--doc-block-gap) 0;
+      padding: var(--doc-surface-pad);
+      border: var(--doc-card-border);
+      border-radius: var(--doc-surface-radius);
+      background: var(--doc-card-bg);
+      transition: border-color 0.2s ease;
+}
+
+.doc-md figure:hover {
+      border-color: var(--doc-surface-hover-border);
+}
+
+.doc-md figure img {
+      width: 100%;
+      height: auto;
+      padding: 4px;
+      border-radius: var(--doc-card-radius);
+      background: var(--color-bg-secondary);
+      box-sizing: border-box;
+      cursor: zoom-in;
+}
+
+.doc-md figcaption {
+      display: flex;
+      align-items: flex-start;
+      gap: 0.4rem;
+      font-size: 0.88rem;
+      line-height: 1.5;
+      color: var(--doc-card-text);
+      --doc-icon: var(--doc-icon-image);
+}
+
+.doc-md figcaption::before {
+      margin-top: 0.15rem;
+}
+
+/* An image with no caption stays a plain screenshot. */
+.doc-md p>img,
+.doc-md>img {
+      display: block;
+      width: 100%;
+      height: auto;
+      margin: var(--doc-block-gap) 0;
+      border: var(--doc-card-border);
+      border-radius: var(--doc-card-radius);
+      cursor: zoom-in;
+}
+
+/* ─── Tables ─────────────────────────────────────────────────────────────── */
+
+.doc-md table {
+      width: 100%;
+      margin: var(--doc-block-gap) 0;
+      border: var(--doc-card-border);
+      border-radius: var(--doc-card-radius);
+      border-collapse: separate;
+      border-spacing: 0;
+      overflow: hidden;
+}
+
+.doc-md th,
+.doc-md td {
+      padding: 0.5rem 0.75rem;
+      text-align: left;
+      border-bottom: var(--doc-card-border);
+}
+
+.doc-md thead th {
+      font-weight: var(--doc-strong-weight);
+      opacity: 1;
+      background: var(--doc-card-bg);
+}
+
+.doc-md tbody tr:last-child td {
+      border-bottom: 0;
+}
+
+/* ─── Generated "On this page" navigation ────────────────────────────────── */
+
+/* Entries are built from the headings, so sub-sections are indented here
+   rather than nested in a second <ul>. */
+.doc-content-right .dc-ctr-h3 a {
+      padding-left: 0.6rem;
+      font-size: var(--doc-code-size);
+}
+
+/* ─── Responsive ─────────────────────────────────────────────────────────── */
+
+@media (max-width: 991.98px) {
+
+      .doc-md>h2 {
+            margin-top: 2.2rem;
+      }
+
+      /* No room in the gutter for the hover marker on narrow screens. */
+      .doc-md>h2:hover::before {
+            content: none;
+      }
+
+      /* A full word-processor indent eats too much of a phone column. */
+      .doc-md {
+            --doc-list-indent: 1.75rem;
+            --doc-list-indent-nested: 1.25rem;
+      }
+}

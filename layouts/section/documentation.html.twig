@@ -6,15 +6,14 @@
 			{% include 'partials/doc_menu.html.twig' %}
 			<div class="col">
 				<div class="row doc-content">
-					{% if page.redirect is defined %}
-						{% set redirect_page = site.pages[page.redirect] %}
-						{% if redirect_page %}
-							{{ redirect_page.content }}
-						{% else %}
-							{{ page.content }}
-						{% endif %}
+					{# A page can borrow the body of another one (`redirect`), so the
+					   content and its format are resolved before rendering. #}
+					{% set content_page = (page.redirect is defined and site.pages[page.redirect]) ? site.pages[page.redirect] : page %}
+					{% if content_page.format|default('html') == 'md' %}
+						{# Pure Markdown page: the chrome is generated, not written by hand #}
+						{% include 'partials/doc_markdown.html.twig' with {'page': content_page} %}
 					{% else %}
-						{{ page.content }}
+						{{ content_page.content }}
 					{% endif %}
 				</div>
 			</div>

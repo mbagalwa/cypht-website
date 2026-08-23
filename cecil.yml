@@ -18,6 +18,14 @@ software:
   os: "Cross-platform, self-hosted (PHP)"
 
 pages:
+  body:
+    toc: [h2]
+    images:
+      caption:
+        enabled: true
+    links:
+      external:
+        blank: true
   virtual:
     - path: contribute-redirect
       slug: contribute

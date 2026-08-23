@@ -3,231 +3,113 @@ id: 5
 title: Unified Inbox
 description: "Discover Cypht's unified inbox. View emails from all your accounts in one place with combined inbox, unread, sent, and flagged views across IMAP, JMAP, and EWS."
 layout: section/documentation
+format: md
+toc_labels:
+  overview: Overview
+  combined_views: Combined Views
+  folder_navigation: Folder Navigation
+  account_management: Account Manage
+  message_management: Message Manage
+  performance: Performance
+  benefits: Benefits
+nav_prev:
+  label: Account Setup
+  url: /documentation/account-setup
+nav_next:
+  label: Compose Email
+  url: /documentation/compose-email
 ---
 
-<div class="doc-content-left col mx-xl-3">
-    <div class="doc-page-header">
-        <h3>Unified Inbox</h3>
-    </div>
+## All Your Email, From All Your Accounts, In One Place {#overview}
 
-    <div id="overview" class="doc-section">
-        <div class="doc-section-header">
-            <a href="#overview">All Your Email, From All Your Accounts, In One Place</a>
-        </div>
-        <span class="doc-section-text">
-            Cypht (pronounced "sift") is like a news reader, but for email. Cypht does not replace your existing accounts - it combines them into one. And it's also a news reader.
-        </span>
+Cypht (pronounced "sift") is like a news reader, but for email. Cypht does not replace your existing accounts - it
+combines them into one. And it's also a news reader.
 
-        <div class="feature-card text-center">
-            <h6><i class="bi bi-inbox"></i> Unified Email Experience</h6>
-            <p class="doc-section-text mb-0">Combine all your email accounts and RSS feeds into a single, streamlined interface</p>
-        </div>
-    </div>
+:::grid
+- **Unified Email Experience**
+  Combine all your email accounts and RSS feeds into a single, streamlined interface
+:::
 
-    <div id="combined_views" class="doc-section">
-        <div class="doc-section-header">
-            <a href="#combined_views">Combined Message Views</a>
-        </div>
-        <span class="doc-section-text">
-            Access all your messages from multiple accounts in unified views that make email management efficient and intuitive.
-        </span>
+## Combined Message Views {#combined_views}
 
-        <div class="doc-subsection-header">
-            <a href="#inbox_types">Unified Inbox Types</a>
-        </div>
-        <div class="doc-grid-content">
-            <div class="">
-                <div class="feature-card doc-img-card">
-                    <h6><i class="bi bi-inbox-fill"></i> Combined Inbox</h6>
-                    <img src="/img/docs/combined_inbox.webp" alt="Cypht combined inbox screenshot" width="2806" height="1500" loading="lazy" decoding="async"/>
-                    <p>View all incoming messages from all your email accounts in a single unified inbox. No need to switch between accounts to see new messages.</p>
-                </div>
-            </div>
-            <div class="">
-                <div class="feature-card doc-img-card">
-                    <h6><i class="bi bi-envelope-open"></i> Unread Messages</h6>
-                    <img src="/img/docs/unread_messages.webp" alt="Cypht unread messages screenshot" width="2806" height="1500" loading="lazy" decoding="async"/>
-                    <p>Quick access to all unread messages across all your accounts, helping you stay on top of important communications.</p>
-                </div>
-            </div>
-            <div class="">
-                <div class="feature-card doc-img-card">
-                    <h6><i class="bi bi-send"></i> Sent Messages</h6>
-                    <img src="/img/docs/sent_messages.webp" alt="Cypht sent messages screenshot" width="2806" height="1500" loading="lazy" decoding="async"/>
-                    <p>View all sent messages from all your accounts in one place, making it easy to track your outgoing communications.</p>
-                </div>
-            </div>
-            <div class="">
-                <div class="feature-card doc-img-card">
-                    <h6><i class="bi bi-flag"></i> Flagged Messages</h6>
-                    <img src="/img/docs/flagged_messages.webp" alt="Cypht flagged messages screenshot" width="2806" height="1500" loading="lazy" decoding="async"/>
-                    <p>Access all your starred or flagged messages across accounts to quickly find important emails you've marked for follow-up.</p>
-                </div>
-            </div>
-        </div>
-    </div>
+Access all your messages from multiple accounts in unified views that make email management efficient and intuitive.
 
-    <div id="folder_navigation" class="doc-section">
-        <div class="doc-section-header">
-            <a href="#folder_navigation">Standard Email Client Navigation</a>
-        </div>
-        <span class="doc-section-text">
-            While Cypht excels at unified views, it also provides traditional email client folder navigation for when you need to access specific folders.
-        </span>
+### Unified Inbox Types {#inbox_types}
 
-        <div class="doc-grid-content">
-            <div class="">
-                <div class="feature-card ">
-                    <h6><i class="bi bi-folder"></i> IMAP Folder Access</h6>
-                    <p>Browse and manage IMAP folders from any of your configured accounts with full folder hierarchy support.</p>
-                </div>
-            </div>
-            <div class="">
-                <div class="feature-card ">
-                    <h6><i class="bi bi-layers"></i> Multi-Account Support</h6>
-                    <p>Switch between different email accounts while maintaining the unified view experience when desired.</p>
-                </div>
-            </div>
-        </div>
-    </div>
+:::grid
+- **Combined Inbox**
+  ![Cypht combined inbox screenshot](/img/docs/combined_inbox.webp)
+  View all incoming messages from all your email accounts in a single unified inbox. No need to switch between
+  accounts to see new messages.
+- **Unread Messages**
+  ![Cypht unread messages screenshot](/img/docs/unread_messages.webp)
+  Quick access to all unread messages across all your accounts, helping you stay on top of important communications.
+- **Sent Messages**
+  ![Cypht sent messages screenshot](/img/docs/sent_messages.webp)
+  View all sent messages from all your accounts in one place, making it easy to track your outgoing communications.
+- **Flagged Messages**
+  ![Cypht flagged messages screenshot](/img/docs/flagged_messages.webp)
+  Access all your starred or flagged messages across accounts to quickly find important emails you've marked for
+  follow-up.
+:::
 
-    <div id="account_management" class="doc-section">
-        <div class="doc-section-header">
-            <a href="#account_management">Account Management</a>
-        </div>
-        <span class="doc-section-text">
-            Flexible profile system that lets you combine different types of accounts and customize your email experience.
-        </span>
+## Standard Email Client Navigation {#folder_navigation}
 
-        <div class="doc-subsection-header">
-            <a href="#flexible_profiles">Flexible Profiles</a>
-        </div>
-        <div class="doc-grid-content">
-            <div class="">
-                <div class="feature-card ">
-                    <h6><i class="bi bi-person"></i> Profile Configuration</h6>
-                    <p>Combine IMAP accounts with SMTP accounts and setup signatures and reply-to details for each profile.</p>
-                </div>
-            </div>
-            <div class="">
-                <div class="feature-card ">
-                    <h6><i class="bi bi-gear"></i> Custom Settings</h6>
-                    <p>Configure individual account settings while maintaining the benefits of unified views.</p>
-                </div>
-            </div>
-        </div>
-    </div>
+While Cypht excels at unified views, it also provides traditional email client folder navigation for when you need to
+access specific folders.
 
-    <div id="message_management" class="doc-section">
-        <div class="doc-section-header">
-            <a href="#message_management">Cross-Account Operations</a>
-        </div>
-        <span class="doc-section-text">
-            Perform email operations across different accounts seamlessly, breaking down the barriers between your email providers.
-        </span>
+:::grid
+- **IMAP Folder Access**
+  Browse and manage IMAP folders from any of your configured accounts with full folder hierarchy support.
+- **Multi-Account Support**
+  Switch between different email accounts while maintaining the unified view experience when desired.
+:::
 
-        <div class="doc-grid-content">
-            <div class="">
-                <div class="feature-card ">
-                    <h6><i class="bi bi-arrow-left-right"></i> Move Between Accounts</h6>
-                    <p>Move emails from one account to another, allowing you to consolidate important messages in your preferred account.</p>
-                </div>
-            </div>
-            <div class="">
-                <div class="feature-card ">
-                    <h6><i class="bi bi-files"></i> Copy Across Accounts</h6>
-                    <p>Copy emails between accounts while keeping the original in place, perfect for backup or organization purposes.</p>
-                </div>
-            </div>
-        </div>
-    </div>
+## Account Management {#account_management}
 
-    <div id="performance" class="doc-section">
-        <div class="doc-section-header">
-            <a href="#performance">Performance & Efficiency</a>
-        </div>
-        <span class="doc-section-text">
-            Cypht is designed for speed and efficiency, handling multiple accounts without sacrificing performance.
-        </span>
+Flexible profile system that lets you combine different types of accounts and customize your email experience.
 
-        <!-- <div class="feature-card">
-            <h6><i class="bi bi-speedometer2"></i> Optimized for Speed</h6>
-            <p>Pages are comprised of only 3 HTTP requests totaling ~50KB (gzipped). Data to populate a page from different sources is collected with parallel AJAX requests. With standard browser caching, pages tend to transfer 10 to 20 KB.</p>
-        </div> -->
+### Flexible Profiles {#flexible_profiles}
 
-        <div class="doc-grid-content">
-            <div class="">
-                <div class="feature-card ">
-                    <h6><i class="bi bi-lightning"></i> Parallel Processing</h6>
-                    <p>Data from multiple accounts is fetched simultaneously using parallel AJAX requests for optimal performance.</p>
-                </div>
-            </div>
-            <div class="">
-                <div class="feature-card ">
-                    <h6><i class="bi bi-memory"></i> Local Caching</h6>
-                    <p>Local storage (session only) is used to cache content for speedier reloads and reduced server load.</p>
-                </div>
-            </div>
-        </div>
-    </div>
+:::grid
+- **Profile Configuration**
+  Combine IMAP accounts with SMTP accounts and setup signatures and reply-to details for each profile.
+- **Custom Settings**
+  Configure individual account settings while maintaining the benefits of unified views.
+:::
 
-    <div id="benefits" class="doc-section">
-        <div class="doc-section-header">
-            <a href="#benefits">Benefits of Unified Inbox</a>
-        </div>
-        <span class="doc-section-text">
-            Discover how the unified inbox approach transforms your email management experience.
-        </span>
+## Cross-Account Operations {#message_management}
 
-        <div class="doc-grid-second-content">
-            <div class="">
-                <div class="feature-card h-100">
-                    <h6><i class="bi bi-clock"></i> Time Saving</h6>
-                    <p>No more switching between accounts to check for new messages. Everything is in one place.</p>
-                </div>
-            </div>
-            <div class="">
-                <div class="feature-card h-100">
-                    <h6><i class="bi bi-eye"></i> Better Overview</h6>
-                    <p>See all your communications at a glance and prioritize what needs your attention.</p>
-                </div>
-            </div>
-            <div class="">
-                <div class="feature-card h-100 ">
-                    <h6><i class="bi bi-search"></i> Unified Search</h6>
-                    <p>Search across all your accounts simultaneously to find exactly what you're looking for.</p>
-                </div>
-            </div>
-        </div>
-    </div>
+Perform email operations across different accounts seamlessly, breaking down the barriers between your email
+providers.
 
-    <nav-pagination
-        prev-label="Account Setup"
-        prev-url="/documentation/account-setup"
-        next-label="Compose Email"
-        next-url="/documentation/compose-email">
-    </nav-pagination>
+:::grid
+- **Move Between Accounts**
+  Move emails from one account to another, allowing you to consolidate important messages in your preferred account.
+- **Copy Across Accounts**
+  Copy emails between accounts while keeping the original in place, perfect for backup or organization purposes.
+:::
 
-</div>
+## Performance & Efficiency {#performance}
 
-<div class="doc-content-right d-none d-xl-flex col-xl-2">
-    <div class="dc-ctr-content">
-        <div class="dc-ctr-header">
-            <p class="dc-ctr-header-title">
-                <svg aria-hidden="true" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M4 5h12M4 12h16M4 19h8" color="currentColor"/></svg>
-                On this page
-            </p>
-        </div>
-        <nav>
-            <ul id="dc-ctr-nav">
-                <li><a href="#overview" class="active">Overview</a></li>
-                <li><a href="#combined_views">Combined Views</a></li>
-                <li><a href="#folder_navigation">Folder Navigation</a></li>
-                <li><a href="#account_management">Account Manage</a></li>
-                <li><a href="#message_management">Message Manage</a></li>
-                <li><a href="#performance">Performance</a></li>
-                <li><a href="#benefits">Benefits</a></li>
-            </ul>
-        </nav>
-    </div>
-</div>
+Cypht is designed for speed and efficiency, handling multiple accounts without sacrificing performance.
+
+:::grid
+- **Parallel Processing**
+  Data from multiple accounts is fetched simultaneously using parallel AJAX requests for optimal performance.
+- **Local Caching**
+  Local storage (session only) is used to cache content for speedier reloads and reduced server load.
+:::
+
+## Benefits of Unified Inbox {#benefits}
+
+Discover how the unified inbox approach transforms your email management experience.
+
+:::grid-sm
+- **Time Saving**
+  No more switching between accounts to check for new messages. Everything is in one place.
+- **Better Overview**
+  See all your communications at a glance and prioritize what needs your attention.
+- **Unified Search**
+  Search across all your accounts simultaneously to find exactly what you're looking for.
+:::

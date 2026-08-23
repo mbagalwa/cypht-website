@@ -1,0 +1,58 @@
+{# Chrome of a documentation page written in pure Markdown (`format: md`).
+
+   The .md file carries nothing but content: the page title, the section
+   separators, the "On this page" navigation and the previous/next cards are
+   all derived here, from the front matter and from the h2/h3 of the body.
+   The tags Cecil generates are styled by assets/css/doc/markdown.css, which
+   maps them onto the look of the hand-written pages. #}
+
+{% set headings = page.body|toc('json')|json_decode %}
+{# A section title can be long where the navigation column is narrow, so the
+   front matter may map an anchor to a shorter label: `toc_labels: {setup: Setup}` #}
+{% set toc_labels = page.toc_labels|default({}) %}
+
+<div class="doc-content-left doc-md col mx-xl-3">
+	<div class="doc-page-header">
+		<h3>{{ page.title }}</h3>
+	</div>
+
+	{# Fenced code blocks reuse the terminal card of the hand-written pages,
+	   which is the wrapper those pages repeat by hand around every <pre>.
+	   It is presentation, so it is added here rather than in the .md file. #}
+	{{ page.content|replace({
+		'<pre>': '<div class="code-preview-content gc-terminal"><pre>',
+		'</pre>': '</pre></div>'
+	})|raw }}
+
+	{# `prev`/`next` are reserved: Cecil fills them with the sibling pages of the
+	   section, sorted by date. The reading order of a guide is editorial, so it
+	   is declared in the front matter as `nav_prev`/`nav_next`. #}
+	{% if page.nav_prev is defined or page.nav_next is defined %}
+		<nav-pagination
+			{%- if page.nav_prev is defined %} prev-label="{{ page.nav_prev.label }}" prev-url="{{ page.nav_prev.url }}"{% endif %}
+			{%- if page.nav_next is defined %} next-label="{{ page.nav_next.label }}" next-url="{{ page.nav_next.url }}"{% endif %}>
+		</nav-pagination>
+	{% endif %}
+</div>
+
+{% if headings is not empty %}
+	<div class="doc-content-right d-none d-xl-flex col-xl-2">
+		<div class="dc-ctr-content">
+			<div class="dc-ctr-header">
+				<p class="dc-ctr-header-title">
+					<svg aria-hidden="true" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M4 5h12M4 12h16M4 19h8" color="currentColor"/></svg>
+					On this page
+				</p>
+			</div>
+			<nav>
+				<ul id="dc-ctr-nav">
+					{% for heading in headings %}
+						<li class="dc-ctr-{{ heading.level }}">
+							<a href="#{{ heading.id }}" class="{{ loop.first ? 'active' : '' }}">{{ toc_labels[heading.id]|default(heading.text) }}</a>
+						</li>
+					{% endfor %}
+				</ul>
+			</nav>
+		</div>
+	</div>
+{% endif %}

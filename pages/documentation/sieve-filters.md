@@ -3,364 +3,243 @@ id: 18
 title: Sieve Filters
 description: "Set up Sieve email filters in Cypht to automatically sort, move, forward, and flag messages server-side. Create rules that work even when you're offline."
 layout: section/documentation
+format: md
+toc_labels:
+  introduction: Introduction
+  enable_module: Enable Module
+  create_from_settings: From Sieve Filters Page
+  create_from_selected: From Selected Messages
+  create_from_message: From Opened Message
+  troubleshooting: Troubleshooting
+  related_work: Related
+nav_prev:
+  label: Search & Filters
+  url: /documentation/search-filters
+nav_next:
+  label: Screen Emails
+  url: /documentation/screen-emails
 ---
 
-<div class="doc-content-left col mx-xl-3">
-    <div class="doc-page-header">
-        <h3>Sieve Filters</h3>
-    </div>
+## What Are Sieve Filters? {#introduction}
 
-    <!-- ======================================== -->
-    <!-- 1. Introduction                          -->
-    <!-- ======================================== -->
+Sieve is a server-side mail filtering language supported by many IMAP servers. In Cypht, Sieve filters let you define
+rules that **run automatically on every new message as it arrives**, as long as the filter is active.
 
-    <div id="introduction" class="doc-section">
-        <div class="doc-section-header">
-            <a href="#introduction">What Are Sieve Filters?</a>
-        </div>
-        <span class="doc-section-text">
-            Sieve is a server-side mail filtering language supported by many IMAP servers. In Cypht, Sieve filters let you define rules that <strong>run automatically on every new message as it arrives</strong>, as long as the filter is active.
-        </span>
-        <span class="doc-section-text">
-            Because the rules execute on the mail server itself, they work even when you are not logged into Cypht. Messages are sorted, flagged, forwarded, or discarded before they ever appear in your inbox view.
-        </span>
+Because the rules execute on the mail server itself, they work even when you are not logged into Cypht. Messages are
+sorted, flagged, forwarded, or discarded before they ever appear in your inbox view.
 
-        <div class="doc-grid-content">
-            <div>
-                <div class="feature-card h-100">
-                    <h6><i class="bi bi-lightning-charge"></i> Automatic</h6>
-                    <p class="mb-0">Active filters process every incoming message without manual intervention.</p>
-                </div>
-            </div>
-            <div>
-                <div class="feature-card h-100">
-                    <h6><i class="bi bi-cloud-check"></i> Server-side</h6>
-                    <p class="mb-0">Rules run on the mail server, so they work even when Cypht is closed or your device is off.</p>
-                </div>
-            </div>
-            <div>
-                <div class="feature-card h-100">
-                    <h6><i class="bi bi-sliders"></i> Flexible</h6>
-                    <p class="mb-0">Move, copy, flag, discard, redirect, or run custom Sieve scripts on matching messages.</p>
-                </div>
-            </div>
-        </div>
+:::grid
+- **Automatic**
+  Active filters process every incoming message without manual intervention.
+- **Server-side**
+  Rules run on the mail server, so they work even when Cypht is closed or your device is off.
+- **Flexible**
+  Move, copy, flag, discard, redirect, or run custom Sieve scripts on matching messages.
+:::
 
-        <div class="tip-card tip-warning mt-3">
-            <span class="tip-warning-text"><i class="bi bi-exclamation-triangle"></i> Requirement</span>
-            <p class="mb-0">Your mail server must support Sieve or ManageSieve. IMAP support alone is not enough - some providers do not expose Sieve management even though they support reading mail over IMAP.</p>
-        </div>
-    </div>
+:::warning
+**Requirement.** Your mail server must support Sieve or ManageSieve. IMAP support alone is not enough - some providers
+do not expose Sieve management even though they support reading mail over IMAP.
+:::
 
-    <!-- ======================================== -->
-    <!-- 2. Enable the module                     -->
-    <!-- ======================================== -->
+## Step 1 : Enable the Sieve Filters Module {#enable_module}
 
-    <div id="enable_module" class="doc-section">
-        <div class="doc-section-header">
-            <a href="#enable_module">Step 1: Enable the Sieve Filters Module</a>
-        </div>
-        <span class="doc-section-text">
-            Before you can create any filter, the <strong>sievefilters</strong> module must be activated in your Cypht configuration. If the Sieve Filters section is already visible under Settings, you can skip this step.
-        </span>
+Before you can create any filter, the **sievefilters** module must be activated in your Cypht configuration. If the
+Sieve Filters section is already visible under Settings, you can skip this step.
 
-        <div class="doc-subsection-header">
-            <a href="#cypht_2">Cypht 2.x (.env file)</a>
-        </div>
-        <span class="doc-section-text">Add <code>sievefilters</code> to the <code>CYPHT_MODULES</code> variable:</span>
-        <pre><code class="language-bash">CYPHT_MODULES="core,imap,smtp,sievefilters"</code></pre>
+### Cypht 2.x (.env file) {#cypht_2}
 
-        <div class="doc-subsection-header">
-            <a href="#cypht_1">Cypht 1.4.x (hm3.ini file)</a>
-        </div>
-        <span class="doc-section-text">Add a new module entry:</span>
-        <pre><code class="language-ini">modules[]=sievefilters</code></pre>
+Add `sievefilters` to the `CYPHT_MODULES` variable :
 
-        <span class="doc-section-text">
-            After saving the configuration, reload or redeploy your Cypht instance. The <strong>Filters</strong> menu will then appear under the Settings tab.
-        </span>
+```bash
+CYPHT_MODULES="core,imap,smtp,sievefilters"
+```
 
-        <br/>
-        <img width="1919" height="991" src="/img/docs/sieve_filters_0.webp" alt="Settings sidebar showing the Filters menu item" loading="lazy" decoding="async" /> <br/><br/>
-    </div>
+### Cypht 1.4.x (hm3.ini file) {#cypht_1}
 
-    <!-- ======================================== -->
-    <!-- 3. Create from the Sieve Filters page    -->
-    <!-- ======================================== -->
+Add a new module entry :
 
-    <div id="create_from_settings" class="doc-section">
-        <div class="doc-section-header">
-            <a href="#create_from_settings">Step 2: Create from the Sieve Filters Page</a>
-        </div>
-        <span class="doc-section-text">
-            The most direct way to manage filters is through the dedicated Sieve Filters page in Settings.
-        </span>
+```ini
+modules[]=sievefilters
+```
 
-        <div class="doc-subsection-header">
-            <a href="#add_filter">Add a Filter</a>
-        </div>
-        <ol>
-            <li>Open <strong>Settings</strong> in the sidebar.</li>
-            <li>Click <strong>Filters</strong>.</li>
+After saving the configuration, reload or redeploy your Cypht instance. The **Filters** menu will then appear under
+the Settings tab.
 
-            <br/>
-            <img width="1918" height="992" src="/img/docs/sieve_filters_1.webp" alt="Filters page showing the selected email account" loading="lazy" decoding="async" /> <br/><br/>
+![Settings sidebar showing the Filters menu item](/img/docs/sieve_filters_0.webp)
 
-            <li>Select the email account you want to manage.</li>
-            <li>Click <strong>Add Filter</strong>.</li>
+## Step 2 : Create from the Sieve Filters Page {#create_from_settings}
 
-            <br/>
-            <img width="1918" height="987" src="/img/docs/sieve_filters_2.webp" alt="Filter list with Add Filter and Add Script buttons" loading="lazy" decoding="async" /> <br/><br/>
-            <li>Enter a filter name and set its priority.</li>
+The most direct way to manage filters is through the dedicated Sieve Filters page in Settings.
 
-            <br/>
-            <img width="1918" height="986" src="/img/docs/sieve_filters_3.webp" alt="Empty Add Filter modal with name, priority, conditions and actions fields" loading="lazy" decoding="async" /> <br/><br/>
+### Add a Filter {#add_filter}
 
-            <li>Add one or more conditions (sender, subject, recipient, body, etc.).</li>
-            <li>Set the test logic: use <strong>ALLOF</strong> if every condition must match, or <strong>ANYOF</strong> if any single condition is enough.</li>
-            <li>Choose the action: move to folder, copy, flag, discard, redirect, etc.</li>
+1. Open **Settings** in the sidebar.
+2. Click **Filters**.
 
-            <br/>
-            <img width="1919" height="988" src="/img/docs/sieve_filters_4.webp" alt="Filled Add Filter form with conditions and redirect action" loading="lazy" decoding="async" /> <br/><br/>
+![Filters page showing the selected email account](/img/docs/sieve_filters_1.webp)
 
-            <li>Save the filter.</li>
-        </ol>
+3. Select the email account you want to manage.
+4. Click **Add Filter**.
 
-        <div class="feature-card">
-            <h6><i class="bi bi-sort-numeric-up"></i> Priority order</h6>
-            <span class="doc-section-text mb-0">Filters run from the lowest priority value to the highest. Place precise, high-confidence rules at lower numbers and broad catch-all rules at higher numbers to avoid conflicts.</span>
-        </div>
+![Filter list with Add Filter and Add Script buttons](/img/docs/sieve_filters_2.webp)
 
-        <div class="doc-subsection-header">
-            <a href="#add_script">Add a Custom Script</a>
-        </div>
-        <span class="doc-section-text">
-            Cypht now includes a <strong>Quick Actions</strong> dropdown in the message list controls so you can create, test, and reuse advanced filters without leaving the current view.
-        </span>
+5. Enter a filter name and set its priority.
 
-        <div class="doc-grid-content">
-            <div>
-                <div class="feature-card h-100">
-                    <h6><i class="bi bi-menu-button"></i> Quick Actions dropdown</h6>
-                    <p class="mb-0">Clicking <strong>Quick Actions</strong> opens a dropdown listing all your saved filters plus a <strong>Create from Selected</strong> entry.</p>
-                </div>
-            </div>
-            <div>
-                <div class="feature-card h-100">
-                    <h6><i class="bi bi-stars"></i> Reusable actions</h6>
-                    <p class="mb-0">All saved filters appear in the Quick Actions dropdown so you can quickly edit them from the message list and DRY RUN Test them.</p>
-                </div>
-            </div>
-            <div>
-                <div class="feature-card h-100">
-                    <h6><i class="bi bi-pencil-square"></i> Quick editing</h6>
-                    <p class="mb-0">Selecting an existing filter opens the edit modal directly, which makes it easy to refine the rule before using it again.</p>
-                </div>
-            </div>
-        </div>
-        <span class="doc-section-text">
-            All saved filters and scripts appear in the list on the Sieve Filters page. Click any entry to open the edit modal where you can update conditions, change actions, or delete the filter entirely.
-        </span>
-    </div>
+![Empty Add Filter modal with name, priority, conditions and actions fields](/img/docs/sieve_filters_3.webp)
 
-    <!-- ======================================== -->
-    <!-- 4. Create from Selected messages          -->
-    <!-- ======================================== -->
+6. Add one or more conditions (sender, subject, recipient, body, etc.).
+7. Set the test logic : use **ALLOF** if every condition must match, or **ANYOF** if any single condition is enough.
+8. Choose the action : move to folder, copy, flag, discard, redirect, etc.
 
-    <div id="create_from_selected" class="doc-section">
-        <div class="doc-section-header">
-            <a href="#create_from_selected">Step 3: Create from Selected Messages</a>
-        </div>
-        <span class="doc-section-text">
-            The <strong>Quick Actions</strong> dropdown in the message list toolbar lets you build filters directly from messages you are looking at, without navigating to Settings.
-        </span>
+![Filled Add Filter form with conditions and redirect action](/img/docs/sieve_filters_4.webp)
 
-        <ol>
-            <li>Select one or more messages in the current mailbox view.</li>
+9. Save the filter.
 
-            <br/>
-            <img width="1913" height="953" src="/img/docs/sieve_filters_5.webp" alt="Inbox with selected messages and toolbar showing Quick Actions" loading="lazy" decoding="async" /> <br/><br/>
+:::grid
+- **Priority order**
+  Filters run from the lowest priority value to the highest. Place precise, high-confidence rules at lower numbers and
+  broad catch-all rules at higher numbers to avoid conflicts.
+:::
 
-            <li>Click the <strong>Quick Actions</strong> button in the toolbar.</li>
-            <li>Click <strong>Create from Selected</strong>.</li>
+### Add a Custom Script {#add_script}
 
-            <br/>
-            <img width="1916" height="990" src="/img/docs/sieve_filters_6.webp" alt="Quick Actions dropdown showing Create from Selected option" loading="lazy" decoding="async" /> <br/><br/>
-            <li>Review the auto-populated conditions (From addresses and Subject keywords are prefilled from the selected messages).</li>
+Cypht now includes a **Quick Actions** dropdown in the message list controls so you can create, test, and reuse
+advanced filters without leaving the current view.
 
-            <br/>
-            <img width="1916" height="946" src="/img/docs/sieve_filters_7.webp" alt="Setup Filter from selected messages modal with auto-populated From emails and Subject keywords" loading="lazy" decoding="async" /> <br/><br/>
+:::grid
+- **Quick Actions dropdown**
+  Clicking **Quick Actions** opens a dropdown listing all your saved filters plus a **Create from Selected** entry.
+- **Reusable actions**
+  All saved filters appear in the Quick Actions dropdown so you can quickly edit them from the message list and DRY
+  RUN Test them.
+- **Quick editing**
+  Selecting an existing filter opens the edit modal directly, which makes it easy to refine the rule before using it
+  again.
+:::
 
-            <li>Adjust the matching options:
-                <ul>
-                    <li><strong>From:</strong> Matches / Does Not Match</li>
-                    <li><strong>Subject:</strong> Contains / Does Not Contain / Ignore Subject</li>
-                </ul>
-            </li>
-            <li>Choose the action to apply.</li>
-            <li>Click <strong>Dry Run</strong> to test the filter against messages already loaded in the list: matched and unmatched messages are shown in a results panel so you can verify the rule before committing.</li>
-            <li>Save the filter.</li>
-        </ol>
+All saved filters and scripts appear in the list on the Sieve Filters page. Click any entry to open the edit modal
+where you can update conditions, change actions, or delete the filter entirely.
 
-        <div class="feature-card">
-            <h6><i class="bi bi-magic"></i> Auto-populated conditions</h6>
-            <span class="doc-section-text mb-0">Cypht prefills From addresses and Subject keywords from the selected messages so you start from real data instead of an empty form.</span>
-        </div>
+## Step 3 : Create from Selected Messages {#create_from_selected}
 
-        <div class="doc-subsection-header">
-            <a href="#dry_run">Dry Run</a>
-        </div>
-        <span class="doc-section-text">
-            The <strong>Dry Run</strong> button tests the current filter conditions against messages already loaded in the message list and shows which ones match and which do not, without moving or changing anything. It does not fetch additional messages from the server.
-        </span>
+The **Quick Actions** dropdown in the message list toolbar lets you build filters directly from messages you are
+looking at, without navigating to Settings.
 
-        <div class="tip-card tip-info mt-3">
-            <span class="tip-info-text"><i class="bi bi-info-circle"></i> Availability</span>
-            <p class="mb-0">Dry Run is only available when creating or editing filters from the message list (e.g. via <strong>Quick Actions → Create from Selected</strong>). It is not available on the Sieve Filters settings page or when creating a filter from an opened message, because there is no message list to test against.</p>
-        </div>
+1. Select one or more messages in the current mailbox view.
 
-        <ol>
-            <li>Create a filter from selected messages or open an existing filter from the Quick Actions dropdown.</li>
-            <li>Adjust the conditions, actions, and match logic.</li>
-            <li>Click <strong>Dry Run</strong> in the modal.</li>
-            <li>Review the matched and unmatched messages in the results panel.</li>
-            <li>Close the results panel, refine the filter, and run it again if needed.</li>
-            <li>Save only when the previewed behavior is correct.</li>
-        </ol>
+![Inbox with selected messages and toolbar showing Quick Actions](/img/docs/sieve_filters_5.webp)
 
-        <div class="doc-grid-content">
-            <div>
-                <div class="feature-card h-100">
-                    <h6><i class="bi bi-play-circle"></i> Preview results</h6>
-                    <p class="mb-0">Matched and unmatched messages are listed in a dismissible results panel. Refine conditions and run again until the preview is correct.</p>
-                </div>
-            </div>
-            <div>
-                <div class="feature-card h-100">
-                    <h6><i class="bi bi-diagram-3"></i> Respects filter logic</h6>
-                    <p class="mb-0">Dry Run uses the same <strong>ALLOF</strong> / <strong>ANYOF</strong> logic as the real filter, so the preview matches real-world behavior.</p>
-                </div>
-            </div>
-        </div>
+2. Click the **Quick Actions** button in the toolbar.
+3. Click **Create from Selected**.
 
-        <div class="doc-subsection-header">
-            <a href="#reuse_actions">Reuse and Edit Quick Actions</a>
-        </div>
-        <span class="doc-section-text">
-            Filters created through this workflow are automatically marked as quick actions and appear in the <strong>Quick Actions</strong> dropdown for future use. Click any existing action in the dropdown to reopen its edit modal, adjust conditions, dry run it against the current messages, or delete it.
-        </span>
-    </div>
+![Quick Actions dropdown showing Create from Selected option](/img/docs/sieve_filters_6.webp)
 
-    <!-- ======================================== -->
-    <!-- 5. Create from an opened message          -->
-    <!-- ======================================== -->
+4. Review the auto-populated conditions (From addresses and Subject keywords are prefilled from the selected
+   messages).
 
-    <div id="create_from_message" class="doc-section">
-        <div class="doc-section-header">
-            <a href="#create_from_message">Step 4: Create from an Opened Message</a>
-        </div>
-        <span class="doc-section-text">
-            When you are reading a single email and want to filter similar messages in the future, use the <strong>Filter similar messages</strong> button.
-        </span>
+![Setup Filter from selected messages modal with auto-populated From emails and Subject keywords](/img/docs/sieve_filters_7.webp)
 
-        <ol>
-            <li>Open the message you want to base the filter on.</li>
+5. Adjust the matching options :
+   - **From :** Matches / Does Not Match
+   - **Subject :** Contains / Does Not Contain / Ignore Subject
+6. Choose the action to apply.
+7. Click **Dry Run** to test the filter against messages already loaded in the list : matched and unmatched messages
+   are shown in a results panel so you can verify the rule before committing.
+8. Save the filter.
 
-            <br/>
-            <img width="1919" height="950" src="/img/docs/sieve_filters_8.webp" alt="Opened message showing Filter similar messages button in the action bar" loading="lazy" decoding="async" /> <br/><br/>
+:::grid
+- **Auto-populated conditions**
+  Cypht prefills From addresses and Subject keywords from the selected messages so you start from real data instead of
+  an empty form.
+:::
 
-            <li>Click <strong>Filter similar messages</strong> in the message actions area.</li>
-            <li>Select the fields to match (From, To, Subject, Reply-To) and click <strong>Create filter</strong>.</li>
+### Dry Run {#dry_run}
 
-            <br/>
-            <img width="1919" height="953" src="/img/docs/sieve_filters_9.webp" alt="Filter similar messages dropdown with From, To, Subject and Reply-To checkboxes" loading="lazy" decoding="async" /> <br/><br/>
-            <li>Review the prefilled conditions: Cypht auto-populates the filter name, sender, recipient, and subject from the opened message.</li>
+The **Dry Run** button tests the current filter conditions against messages already loaded in the message list and
+shows which ones match and which do not, without moving or changing anything. It does not fetch additional messages
+from the server.
 
-            <br/>
-            <img width="1918" height="951" src="/img/docs/sieve_filters_10.webp" alt="Add Filter for message like this modal with auto-populated conditions and actions" loading="lazy" decoding="async" /> <br/><br/>
+:::info
+**Availability.** Dry Run is only available when creating or editing filters from the message list (e.g. via **Quick
+Actions → Create from Selected**). It is not available on the Sieve Filters settings page or when creating a filter
+from an opened message, because there is no message list to test against.
+:::
 
-            <li>Adjust the conditions and choose the action (move, flag, discard, etc.).</li>
-            <li>Save the filter.</li>
-        </ol>
+1. Create a filter from selected messages or open an existing filter from the Quick Actions dropdown.
+2. Adjust the conditions, actions, and match logic.
+3. Click **Dry Run** in the modal.
+4. Review the matched and unmatched messages in the results panel.
+5. Close the results panel, refine the filter, and run it again if needed.
+6. Save only when the previewed behavior is correct.
 
-        <div class="feature-card">
-            <h6><i class="bi bi-envelope-open"></i> One-click starting point</h6>
-            <span class="doc-section-text mb-0">This is the fastest way to react to a single message. You do not need to go to Settings or select multiple messages first, just open the email and create the rule from it.</span>
-        </div>
+:::grid
+- **Preview results**
+  Matched and unmatched messages are listed in a dismissible results panel. Refine conditions and run again until the
+  preview is correct.
+- **Respects filter logic**
+  Dry Run uses the same **ALLOF** / **ANYOF** logic as the real filter, so the preview matches real-world behavior.
+:::
 
-        <div class="tip-card tip-info mt-3">
-            <span class="tip-info-text"><i class="bi bi-info-circle"></i> Where does the filter go?</span>
-            <p class="mb-0">The filter is saved to the same Sieve Filters list on the Settings page. You can edit or delete it later from there, or reuse it as a custom action.</p>
-        </div>
-    </div>
+### Reuse and Edit Quick Actions {#reuse_actions}
 
-    <!-- ======================================== -->
-    <!-- Troubleshooting                          -->
-    <!-- ======================================== -->
+Filters created through this workflow are automatically marked as quick actions and appear in the **Quick Actions**
+dropdown for future use. Click any existing action in the dropdown to reopen its edit modal, adjust conditions, dry
+run it against the current messages, or delete it.
 
-    <div id="troubleshooting" class="doc-section">
-        <div class="doc-section-header">
-            <a href="#troubleshooting">Troubleshooting</a>
-        </div>
+## Step 4 : Create from an Opened Message {#create_from_message}
 
-        <div class="tip-card tip-warning">
-            <span class="tip-warning-text"><i class="bi bi-tools"></i> Filter not appearing?</span>
-            <p class="mb-0">Verify that the <strong>sievefilters</strong> module is enabled and that your instance has been reloaded after the configuration change.</p>
-        </div>
+When you are reading a single email and want to filter similar messages in the future, use the **Filter similar
+messages** button.
 
-        <div class="tip-card tip-warning mt-3">
-            <span class="tip-warning-text"><i class="bi bi-server"></i> Filter saved but not running?</span>
-            <p class="mb-0">Check whether your provider supports ManageSieve and whether the selected account is the same mailbox that receives the tested messages.</p>
-        </div>
+1. Open the message you want to base the filter on.
 
-        <div class="tip-card tip-info mt-3">
-            <span class="tip-info-text"><i class="bi bi-lightbulb"></i> Best practice</span>
-            <p class="mb-0">When debugging, disable or simplify overlapping rules. Two filters that both match the same message can produce inconsistent behavior when the real issue is rule order.</p>
-        </div>
-    </div>
+![Opened message showing Filter similar messages button in the action bar](/img/docs/sieve_filters_8.webp)
 
-    <!-- ======================================== -->
-    <!-- Related Work                             -->
-    <!-- ======================================== -->
+2. Click **Filter similar messages** in the message actions area.
+3. Select the fields to match (From, To, Subject, Reply-To) and click **Create filter**.
 
-    <div id="related_work" class="doc-section">
-        <div class="doc-section-header">
-            <a href="#related_work">Related</a>
-        </div>
+![Filter similar messages dropdown with From, To, Subject and Reply-To checkboxes](/img/docs/sieve_filters_9.webp)
 
-        <ul>
-            <li><strong>Issue:</strong> <a href="https://github.com/cypht-org/cypht/issues/398" target="_blank" rel="noopener">Configurable custom actions (buttons) #398</a></li>
-            <li><strong>Sieve language resources:</strong> <a href="http://sieve.info/" target="_blank" rel="noopener">sieve.info</a>, <a href="https://p5r.uk/blog/2011/sieve-tutorial.html" target="_blank" rel="noopener">Sieve tutorial</a>, <a href="https://www.fastmail.com/help/technical/sieve.html" target="_blank" rel="noopener">Fastmail Sieve docs</a></li>
-        </ul>
-    </div>
+4. Review the prefilled conditions : Cypht auto-populates the filter name, sender, recipient, and subject from the
+   opened message.
 
-    <nav-pagination
-        prev-label="Search & Filters"
-        prev-url="/documentation/search-filters"
-        next-label="Screen Emails"
-        next-url="/documentation/screen-emails">
-    </nav-pagination>
+![Add Filter for message like this modal with auto-populated conditions and actions](/img/docs/sieve_filters_10.webp)
 
-</div>
+5. Adjust the conditions and choose the action (move, flag, discard, etc.).
+6. Save the filter.
 
-<div class="doc-content-right d-none d-xl-flex col-xl-2">
-    <div class="dc-ctr-content">
-        <div class="dc-ctr-header">
-            <p class="dc-ctr-header-title">
-                <svg aria-hidden="true" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M4 5h12M4 12h16M4 19h8" color="currentColor"/></svg>
-                On this page
-            </p>
-        </div>
-        <nav>
-            <ul id="dc-ctr-nav">
-                <li><a href="#introduction" class="active">Introduction</a></li>
-                <li><a href="#enable_module">Enable Module</a></li>
-                <li><a href="#create_from_settings">From Sieve Filters Page</a></li>
-                <li><a href="#create_from_selected">From Selected Messages</a></li>
-                <li><a href="#create_from_message">From Opened Message</a></li>
-                <li><a href="#troubleshooting">Troubleshooting</a></li>
-                <li><a href="#related_work">Related</a></li>
-            </ul>
-        </nav>
-    </div>
-</div>
+:::grid
+- **One-click starting point**
+  This is the fastest way to react to a single message. You do not need to go to Settings or select multiple messages
+  first, just open the email and create the rule from it.
+:::
+
+:::info
+**Where does the filter go?** The filter is saved to the same Sieve Filters list on the Settings page. You can edit or
+delete it later from there, or reuse it as a custom action.
+:::
+
+## Troubleshooting {#troubleshooting}
+
+:::warning
+**Filter not appearing?** Verify that the **sievefilters** module is enabled and that your instance has been reloaded
+after the configuration change.
+:::
+
+:::warning
+**Filter saved but not running?** Check whether your provider supports ManageSieve and whether the selected account is
+the same mailbox that receives the tested messages.
+:::
+
+:::tip
+**Best practice.** When debugging, disable or simplify overlapping rules. Two filters that both match the same message
+can produce inconsistent behavior when the real issue is rule order.
+:::
+
+## Related {#related_work}
+
+- **Issue :** [Configurable custom actions (buttons) #398](https://github.com/cypht-org/cypht/issues/398)
+- **Sieve language resources :** [sieve.info](http://sieve.info/),
+  [Sieve tutorial](https://p5r.uk/blog/2011/sieve-tutorial.html),
+  [Fastmail Sieve docs](https://www.fastmail.com/help/technical/sieve.html)

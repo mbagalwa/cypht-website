@@ -3,311 +3,182 @@ id: 15
 title: Join the Community
 description: "Join the Cypht open-source community. Connect with contributors on Gitter, participate in discussions, and collaborate on building a better email experience."
 layout: section/documentation
+format: md
+toc_labels:
+  introduction: Getting Started
+  about_community: About Community
+  joining_community: Joining Community
+  development_environment: Development Setup
+  contributing: Contributing
+  community_resources: Resources
+  developer_links: Developer Links
+  feedback: Feedback
+nav_prev:
+  label: Reporting Bugs
+  url: /documentation/reporting-bugs
+nav_next:
+  label: Get Help
+  url: /documentation/help
 ---
 
-<div class="doc-content-left col mx-xl-3">
-    <div class="doc-page-header">
-        <h3>Join the Community</h3>
-    </div>
+## Getting Started with Cypht Community {#introduction}
 
-    <div id="introduction" class="doc-section">
-        <div class="doc-section-header">
-            <a href="#introduction">Getting Started with Cypht Community</a>
-        </div>
-        <span class="doc-section-text">
-            Welcome to the Cypht community! We are excited to have you join us and become a part of our mission to develop and improve Cypht. This documentation is designed to help you get started with our community, understand the development process, and contribute effectively to the project.
-        </span>
-    </div>
+Welcome to the Cypht community! We are excited to have you join us and become a part of our mission to develop and
+improve Cypht. This documentation is designed to help you get started with our community, understand the development
+process, and contribute effectively to the project.
 
-    <div id="about_community" class="doc-section">
-        <div class="doc-section-header">
-            <a href="#about_community">About the Cypht Community</a>
-        </div>
-        <span class="doc-section-text">
-            Learn about what makes Cypht unique and the values that drive our community forward.
-        </span>
+## About the Cypht Community {#about_community}
 
-        <div class="doc-subsection-header">
-            <a href="#what_is_cypht">What is Cypht?</a>
-        </div>
-        <p>Cypht is an Open Source email client and news aggregator with a modular design. Unlike traditional applications, Cypht is built entirely from plugins, or "module sets," with the core modules being essential. Users can customize their experience by adding or replacing modules to suit specific site requirements.</p>
+Learn about what makes Cypht unique and the values that drive our community forward.
 
-        <div class="feature-card">
-            <h6><i class="bi bi-puzzle"></i> Modular Architecture</h6>
-            <p>This modular approach offers flexibility and easy customization, although it may introduce complexity. Every feature is implemented as a module that can be enabled or disabled independently.</p>
-        </div>
+### What is Cypht? {#what_is_cypht}
 
-        <div class="doc-subsection-header">
-            <a href="#our_values">Our Values</a>
-        </div>
-        <p>As a community, we prioritize collaboration, inclusivity, and transparency. We encourage respect for others and open communication. Our goal is to create a welcoming environment for all developers, regardless of experience levels.</p>
+Cypht is an Open Source email client and news aggregator with a modular design. Unlike traditional applications, Cypht
+is built entirely from plugins, or "module sets," with the core modules being essential. Users can customize their
+experience by adding or replacing modules to suit specific site requirements.
 
-        <div class="doc-grid-content">
-            <div class="">
-                <div class="feature-card h-100">
-                    <h6><i class="bi bi-people"></i> Collaboration</h6>
-                    <p>We work together to solve problems and improve Cypht for everyone.</p>
-                </div>
-            </div>
-            <div class="">
-                <div class="feature-card h-100">
-                    <h6><i class="bi bi-shield-check"></i> Inclusivity</h6>
-                    <p>We welcome contributors of all backgrounds and experience levels.</p>
-                </div>
-            </div>
-            <div class="">
-                <div class="feature-card h-100">
-                    <h6><i class="bi bi-eye"></i> Transparency</h6>
-                    <p>Our development process is open and accessible to everyone.</p>
-                </div>
-            </div>
-            <div class="">
-                <div class="feature-card h-100">
-                    <h6><i class="bi bi-heart"></i> Respect</h6>
-                    <p>We treat all community members with dignity and respect.</p>
-                </div>
-            </div>
-        </div>
-    </div>
+:::grid
+- **Modular Architecture**
+  This modular approach offers flexibility and easy customization, although it may introduce complexity. Every feature
+  is implemented as a module that can be enabled or disabled independently.
+:::
 
-    <div id="joining_community" class="doc-section">
-        <div class="doc-section-header">
-            <a href="#joining_community">Joining the Community</a>
-        </div>
-        <span class="doc-section-text">
-            Ready to get involved? Here's how you can start your journey with the Cypht community.
-        </span>
+### Our Values {#our_values}
 
-        <div class="doc-subsection-header">
-            <a href="#getting_involved">Getting Involved</a>
-        </div>
-        <p>To start your journey with the Cypht community, connect with us on Gitter where you can chat with developers and community members in real-time. <a href="https://gitter.im/cypht-org/community" target="_blank" class="text-link ms-1"><i class="bi bi-chat-dots me-1"></i>Join us</a></p>
+As a community, we prioritize collaboration, inclusivity, and transparency. We encourage respect for others and open
+communication. Our goal is to create a welcoming environment for all developers, regardless of experience levels.
 
-        <div class="tip-card tip-info mt-3">
-            <span class="tip-info-text"><i class="bi bi-info-circle"></i> First Steps</span>
-            <p class="mb-0">Don't be shy! Introduce yourself in the chat and let us know what interests you about Cypht. We're always happy to welcome new members.</p>
-        </div>
-    </div>
+:::grid
+- **Collaboration**
+  We work together to solve problems and improve Cypht for everyone.
+- **Inclusivity**
+  We welcome contributors of all backgrounds and experience levels.
+- **Transparency**
+  Our development process is open and accessible to everyone.
+- **Respect**
+  We treat all community members with dignity and respect.
+:::
 
-    <div id="development_environment" class="doc-section">
-        <div class="doc-section-header">
-            <a href="#development_environment">Setting up Your Development Environment</a>
-        </div>
-        <span class="doc-section-text">
-            Before you can contribute to Cypht, you need to set up your development environment with the right tools and configuration.
-        </span>
+## Joining the Community {#joining_community}
 
-        <div class="doc-subsection-header">
-            <a href="#tools_software">Tools and Software</a>
-        </div>
-        <p>You will need the following tools and software to start contributing:</p>
+Ready to get involved? Here's how you can start your journey with the Cypht community.
 
-        <div class="doc-grid-content">
-            <div class="">
-                <div class="feature-card h-100">
-                    <h6><i class="bi bi-code-slash"></i> Code Editor</h6>
-                    <p>A code editor of your choice (e.g., VSCode, Sublime Text, PhpStorm)</p>
-                </div>
-            </div>
-            <div class="">
-                <div class="feature-card h-100">
-                    <h6><i class="bi bi-git"></i> Version Control</h6>
-                    <p>Git for version control and collaboration</p>
-                </div>
-            </div>
-            <div class="">
-                <div class="feature-card h-100">
-                    <h6><i class="bi bi-filetype-php"></i> PHP Environment</h6>
-                    <p>PHP for developing Cypht (version 7.4+ recommended)</p>
-                </div>
-            </div>
-            <div class="">
-                <div class="feature-card h-100">
-                    <h6><i class="bi bi-server"></i> Web Server</h6>
-                    <p>A web server (e.g., Apache, Nginx) for testing</p>
-                </div>
-            </div>
-        </div>
+### Getting Involved {#getting_involved}
 
-        <div class="doc-subsection-header">
-            <a href="#configuration_setup">Configuration and Setup</a>
-        </div>
-        <span class="doc-section-text">For detailed installation, configuration, and setup instructions, please check our <a href="https://www.cypht.org/install" target="_blank" class="text-link ms-1">Installation Guide</a></span>
-    </div>
+To start your journey with the Cypht community, connect with us on Gitter where you can chat with developers and
+community members in real-time. [Join us](https://gitter.im/cypht-org/community)
 
-    <div id="contributing" class="doc-section">
-        <div class="doc-section-header">
-            <a href="#contributing">Contributing to Cypht</a>
-        </div>
-        <span class="doc-section-text">
-            Ready to contribute? Follow our established practices and guidelines to ensure your contributions are effective and welcome.
-        </span>
+:::info
+**First Steps.** Don't be shy! Introduce yourself in the chat and let us know what interests you about Cypht. We're
+always happy to welcome new members.
+:::
 
-        <div class="doc-subsection-header">
-            <a href="#contribution_practices">Contribution Practices</a>
-        </div>
-        <span class="doc-section-text">When contributing to Cypht, follow these established practices to maintain code quality and community standards:  <a href="https://www.cypht.org/contribute" target="_blank" class="text-link ms-1">Contribution Guidelines</a></span>
+## Setting up Your Development Environment {#development_environment}
 
-        <div class="doc-subsection-header mt-3">
-            <a href="#contribution_types">Types of Contributions</a>
-        </div>
-        <div class="doc-grid-second-content">
-            <div class="">
-                <div class="feature-card h-100">
-                    <h6><i class="bi bi-bug"></i> Bug Fixes</h6>
-                    <p>Help us squash bugs and improve stability</p>
-                </div>
-            </div>
-            <div class="">
-                <div class="feature-card h-100">
-                    <h6><i class="bi bi-plus-circle"></i> New Features</h6>
-                    <p>Add exciting new functionality to Cypht</p>
-                </div>
-            </div>
-            <div class="">
-                <div class="feature-card h-100">
-                    <h6><i class="bi bi-book"></i> Documentation</h6>
-                    <p>Improve guides and help others learn</p>
-                </div>
-            </div>
-        </div>
-    </div>
+Before you can contribute to Cypht, you need to set up your development environment with the right tools and
+configuration.
 
-    <div id="community_resources" class="doc-section">
-        <div class="doc-section-header">
-            <a href="#community_resources">Community Resources</a>
-        </div>
-        <span class="doc-section-text">
-            Explore these resources to learn more about Cypht and get the help you need.
-        </span>
+### Tools and Software {#tools_software}
 
-        <div class="doc-subsection-header">
-            <a href="#documentation">Documentation</a>
-        </div>
-        <div class="doc-grid-content">
-            <div class="">
-                <div class="feature-card h-100">
-                    <h6><i class="bi bi-journal-text"></i> Official Documentation</h6>
-                    <p>Comprehensive guides and API documentation</p>
-                    <a href="https://www.cypht.org/documentation" target="_blank" class="doc-btn-card btn-sm">View Docs</a>
-                </div>
-            </div>
-            <div class="">
-                <div class="feature-card h-100">
-                    <h6><i class="bi bi-star"></i> Major Features</h6>
-                    <p>Explore Cypht's powerful features and capabilities</p>
-                    <a href="https://www.cypht.org/features" target="_blank" class="doc-btn-card btn-sm">View Features</a>
-                </div>
-            </div>
-        </div>
+You will need the following tools and software to start contributing :
 
-        <div class="doc-subsection-header">
-            <a href="#getting_help">Getting Help</a>
-        </div>
-        <p>Don't hesitate to ask for help or guidance. We have experienced community members who are willing to mentor and support newcomers. Feel free to reach out on Gitter.</p>
+:::grid
+- **Code Editor**
+  A code editor of your choice (e.g., VSCode, Sublime Text, PhpStorm)
+- **Version Control**
+  Git for version control and collaboration
+- **PHP Environment**
+  PHP for developing Cypht (version 7.4+ recommended)
+- **Web Server**
+  A web server (e.g., Apache, Nginx) for testing
+:::
 
-        <div class="tip-card tip-info">
-            <span class="tip-info-text"><i class="bi bi-lightbulb"></i> Mentorship Available</span>
-            <p class="mb-0">Our community includes experienced developers who are happy to mentor newcomers. Whether you need help with your first contribution or want to understand Cypht's architecture better, just ask!</p>
-        </div>
-    </div>
+### Configuration and Setup {#configuration_setup}
 
-    <div id="developer_links" class="doc-section">
-        <div class="doc-section-header">
-            <a href="#developer_links">Developer Links</a>
-        </div>
-        <span class="doc-section-text">
-            Quick access to important developer resources and tools.
-        </span>
+For detailed installation, configuration, and setup instructions, please check our
+[Installation Guide](https://www.cypht.org/install).
 
-        <div class="doc-grid-content">
-            <div class="">
-                <div class="feature-card h-100">
-                    <h6><i class="bi bi-github"></i> GitHub Repository</h6>
-                    <p>View source code, submit issues, and contribute</p>
-                    <a href="https://github.com/cypht-org/cypht" target="_blank" class="doc-btn-card btn-sm">View on GitHub</a>
-                </div>
-            </div>
-            <div class="">
-                <div class="feature-card h-100">
-                    <h6><i class="bi bi-github"></i> Website Repository</h6>
-                    <p>Contribute to the Cypht website and documentation</p>
-                    <a href="https://github.com/cypht-org/cypht-website" target="_blank" class="doc-btn-card btn-sm">Website Repo</a>
-                </div>
-            </div>
-        </div>
+## Contributing to Cypht {#contributing}
 
-        <div class="doc-grid-second-content">
-            <div class="">
-                <div class="feature-card h-100">
-                    <h6><i class="bi bi-exclamation-triangle"></i> Report Issues</h6>
-                    <p>Submit bug reports and feature requests</p>
-                    <a href="https://github.com/cypht-org/cypht/issues" target="_blank" class="doc-btn-card btn-sm">Submit Issue</a>
-                </div>
-            </div>
-            <div class="">
-                <div class="feature-card h-100">
-                    <h6><i class="bi bi-chat-dots"></i> Gitter Chat</h6>
-                    <p>Real-time chat with the community</p>
-                    <a href="https://gitter.im/cypht-org/community" target="_blank" class="doc-btn-card btn-sm">Join Chat</a>
-                </div>
-            </div>
-            <div class="">
-                <div class="feature-card h-100">
-                    <h6><i class="bi bi-hand-thumbs-up"></i> Contribute</h6>
-                    <p>Learn how to contribute to Cypht</p>
-                    <a href="https://www.cypht.org/contribute" target="_blank" class="doc-btn-card btn-sm">Contribute Guide</a>
-                </div>
-            </div>
-        </div>
-    </div>
+Ready to contribute? Follow our established practices and guidelines to ensure your contributions are effective and
+welcome.
 
-    <div id="feedback" class="doc-section">
-        <div class="doc-section-header">
-            <a href="#feedback">Have a Suggestion or Question?</a>
-        </div>
-        <span class="doc-section-text">
-            We love feedback and want to hear from you! Your suggestions and questions help us improve Cypht for everyone.
-        </span>
+### Contribution Practices {#contribution_practices}
 
-        <div class="feature-card text-center">
-            <h6><i class="bi bi-envelope"></i> Get in Touch</h6>
-            <p>Whether you have questions, suggestions, or just want to say hello, we'd love to hear from you!</p>
-            <div class="d-flex gap-2 justify-content-center flex-wrap">
-                <a href="https://gitter.im/cypht-org/community" target="_blank" class="doc-btn-card btn-sm btn-success">Join Chat</a>
-                <a href="https://github.com/cypht-org/cypht/issues" target="_blank" class="doc-btn-card btn-sm">Submit Feedback</a>
-            </div>
-        </div>
-    </div>
+When contributing to Cypht, follow these established practices to maintain code quality and community standards :
+[Contribution Guidelines](https://www.cypht.org/contribute)
 
-    <nav-pagination
-        prev-label="Reporting Bugs"
-        prev-url="/documentation/reporting-bugs"
-        next-label="Get Help"
-        next-url="/documentation/help">
-    </nav-pagination>
+### Types of Contributions {#contribution_types}
 
-</div>
+:::grid-sm
+- **Bug Fixes**
+  Help us squash bugs and improve stability
+- **New Features**
+  Add exciting new functionality to Cypht
+- **Documentation**
+  Improve guides and help others learn
+:::
 
-<div class="doc-content-right d-none d-xl-flex col-xl-2">
-    <div class="dc-ctr-content">
-        <div class="dc-ctr-header">
-            <p class="dc-ctr-header-title">
-                <svg aria-hidden="true" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M4 5h12M4 12h16M4 19h8" color="currentColor"/></svg>
-                On this page
-            </p>
-        </div>
-        <nav>
-            <ul id="dc-ctr-nav">
-                <li><a href="#introduction" class="active">Getting Started</a></li>
-                <li><a href="#about_community">About Community</a></li>
-                <li><a href="#joining_community">Joining Community</a></li>
-                <li><a href="#development_environment">Development Setup</a></li>
-                <li><a href="#contributing">Contributing</a></li>
-                <li><a href="#community_resources">Resources</a></li>
-                <li><a href="#developer_links">Developer Links</a></li>
-                <li><a href="#feedback">Feedback</a></li>
-            </ul>
-        </nav>
-    </div>
-</div>
+## Community Resources {#community_resources}
+
+Explore these resources to learn more about Cypht and get the help you need.
+
+### Documentation {#documentation}
+
+:::grid
+- **Official Documentation**
+  Comprehensive guides and API documentation
+  [View Docs](https://www.cypht.org/documentation)
+- **Major Features**
+  Explore Cypht's powerful features and capabilities
+  [View Features](https://www.cypht.org/features)
+:::
+
+### Getting Help {#getting_help}
+
+Don't hesitate to ask for help or guidance. We have experienced community members who are willing to mentor and
+support newcomers. Feel free to reach out on Gitter.
+
+:::tip
+**Mentorship Available.** Our community includes experienced developers who are happy to mentor newcomers. Whether you
+need help with your first contribution or want to understand Cypht's architecture better, just ask!
+:::
+
+## Developer Links {#developer_links}
+
+Quick access to important developer resources and tools.
+
+:::grid
+- **GitHub Repository**
+  View source code, submit issues, and contribute
+  [View on GitHub](https://github.com/cypht-org/cypht)
+- **Website Repository**
+  Contribute to the Cypht website and documentation
+  [Website Repo](https://github.com/cypht-org/cypht-website)
+:::
+
+:::grid-sm
+- **Report Issues**
+  Submit bug reports and feature requests
+  [Submit Issue](https://github.com/cypht-org/cypht/issues)
+- **Gitter Chat**
+  Real-time chat with the community
+  [Join Chat](https://gitter.im/cypht-org/community)
+- **Contribute**
+  Learn how to contribute to Cypht
+  [Contribute Guide](https://www.cypht.org/contribute)
+:::
+
+## Have a Suggestion or Question? {#feedback}
+
+We love feedback and want to hear from you! Your suggestions and questions help us improve Cypht for everyone.
+
+:::grid
+- **Get in Touch**
+  Whether you have questions, suggestions, or just want to say hello, we'd love to hear from you!
+:::
+
+:::actions
+[Join Chat](https://gitter.im/cypht-org/community)
+[Submit Feedback](https://github.com/cypht-org/cypht/issues)
+:::
