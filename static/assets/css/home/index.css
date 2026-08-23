@@ -41,8 +41,8 @@
       line-height: 1.6;
       color: var(--color-text-secondary);
       width: 80%;
-      /* font-size: clamp(1rem, 1.2vw, 1.1rem); */
       font-size: clamp(1rem, 1.2vw, 1.1rem);
+      font-weight: 500;
 }
 
 .home-hero-actions {
@@ -227,14 +227,10 @@
 .mini-stat {
       display: flex;
       align-items: center;
+      justify-content: center;
       gap: .75rem;
       margin-bottom: 3rem;
       color: var(--color-text);
-}
-
-.stat-text {
-      font-size: .92rem;
-      opacity: .8;
 }
 
 
@@ -261,6 +257,8 @@
 .stat-text {
       font-size: .92rem;
       opacity: .8;
+      /* The counters sit on two lines, flush left beside the avatars. */
+      align-items: flex-start;
 }
 
 .stat-text strong {
@@ -296,8 +294,7 @@
             width: 60%;
 
             & .home-hs-subtitle {
-                  max-width: calc(100% - 14rem);
-                  /* background-color: blue; */
+                  max-width: calc(100% - 2rem);
             }
       }
 
@@ -306,11 +303,6 @@
 @media (min-width: 1200px) {
       .home-hs-text-content {
             width: 67%;
-
-            & .home-hs-subtitle {
-                  max-width: calc(100% - 17rem);
-                  /* background-color: green; */
-            }
       }
 }
 
@@ -318,6 +310,7 @@
 [data-theme="dark"] #hero_minimal::before {
       background: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='100' height='100' viewBox='0 0 100 100'><defs><pattern id='grid' width='100' height='100' patternUnits='userSpaceOnUse'><path d='M 100 0 L 0 0 0 100' fill='none' stroke='rgba(255,255,255,0.08)' stroke-width='1'/></pattern></defs><rect width='100%' height='100%' fill='url(%23grid)'/></svg>");
 }
+
 /* Hero text: constrain width + clamp children so the heading never overflows on mobile
    (align-items:center otherwise sizes children to their max-content width). */
 .home-hs-text-content {
@@ -325,6 +318,21 @@
       max-width: 42rem;
       margin-inline: auto;
 }
-.home-hs-text-content > * {
+
+.home-hs-text-content>* {
       max-width: 100%;
+}
+
+/* Narrow screens: beside the avatars the counters fray into three ragged lines,
+   so the block stacks and everything centres under the hero. */
+@media (max-width: 767.98px) {
+      .mini-stat {
+            flex-direction: column;
+            gap: .6rem;
+            text-align: center;
+      }
+
+      .mini-stat .stat-text {
+            align-items: center;
+      }
 }
