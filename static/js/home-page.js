@@ -28,7 +28,6 @@ function init_feature_cards() {
   });
 }
 
-
 // ===============================
 // Testimonials (IntersectionObserver)
 // ===============================
@@ -53,7 +52,6 @@ function init_testimonials() {
     .forEach((card) => observer.observe(card));
 }
 
-
 // ===============================
 // FAQ
 // ===============================
@@ -73,11 +71,22 @@ function init_faq() {
   });
 }
 
+// ===============================
+// Live hero counters
+// ===============================
 
-// ===============================
-// Packagist downloads loader
-// ===============================
-async function load_packagist_stats() {
+// Shortens a counter (159432 -> "159k"), flooring so the trailing "+" stays truthful.
+function abbreviate(value) {
+  for (const [threshold, suffix] of [[1e9, "G"], [1e6, "M"], [1e3, "k"]]) {
+    if (value >= threshold) {
+      const scaled = Math.floor((value / threshold) * 10) / 10;
+      return (scaled < 10 ? scaled : Math.floor(scaled)) + suffix;
+    }
+  }
+  return String(value);
+}
+
+async function refresh_packagist_stat() {
   const el = document.getElementById("packagist-downloads");
   if (!el) return;
 
@@ -86,13 +95,25 @@ async function load_packagist_stats() {
       "https://packagist.org/packages/jason-munro/cypht.json"
     );
     const data = await res.json();
-    const downloads = data.package.downloads.total;
-
-    el.textContent = `${downloads.toLocaleString()}+`;
-    el.classList.add("stat-indicator");
+    el.textContent = `${abbreviate(data.package.downloads.total)}+`;
   } catch (err) {
     console.error("Packagist stats error:", err);
-    el.textContent = "--";
+  }
+}
+
+async function refresh_docker_stat() {
+  const el = document.getElementById("docker-pulls");
+  if (!el) return;
+
+  try {
+    const res = await fetch(
+      "https://img.shields.io/docker/pulls/cypht/cypht.json"
+    );
+    const data = await res.json();
+    // shields.io pre-abbreviates ("159k"); ignore anything else (e.g. "invalid").
+    if (/^[\d.]+[kMG]?$/.test(data.value)) el.textContent = `${data.value}+`;
+  } catch (err) {
+    console.error("Docker stats error:", err);
   }
 }
 
@@ -103,6 +124,7 @@ document.addEventListener("DOMContentLoaded", () => {
   init_feature_cards();
   init_testimonials();
   init_faq();
-  load_packagist_stats();
+  refresh_packagist_stat();
+  refresh_docker_stat();
 });
 
