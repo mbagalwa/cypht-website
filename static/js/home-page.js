@@ -127,4 +127,3 @@ document.addEventListener("DOMContentLoaded", () => {
   refresh_packagist_stat();
   refresh_docker_stat();
 });
-
