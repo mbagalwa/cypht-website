@@ -28,6 +28,8 @@
   --gc-terminal-text: #e8e6ef;
   --gc-terminal-copy: rgba(210, 200, 245, 0.75);
   --gc-terminal-copy-hover: #f5f3ff;
+  --gc-terminal-copy-success: #86efac;
+  --gc-terminal-copy-error: #fb7185;
   --gc-terminal-copy-btn-bg: #2c2c2e;
   --gc-terminal-copy-btn-border: rgba(255, 255, 255, 0.14);
   --gc-terminal-copy-btn-icon: #ffffff;
@@ -91,7 +93,8 @@
   box-sizing: border-box !important;
 }
 
-/* Copy: pill like theme toggle - gray surface, thin border, white icon */
+/* Copy: a bare icon, no surface and no border. It sits on the dark card, so
+   its states are carried by the icon colour alone. */
 .code-preview-content.gc-terminal .code-card-copy,
 .code-preview-content.gc-terminal .code-copy-btn {
   display: inline-flex !important;
@@ -101,19 +104,20 @@
   opacity: 1 !important;
   pointer-events: auto !important;
   position: absolute !important;
-  top: 8px !important;
-  right: 8px !important;
+  top: 6px !important;
+  right: 6px !important;
   z-index: 10 !important;
   margin: 0 !important;
-  padding: 6px !important;
-  min-width: 30px !important;
-  min-height: 30px !important;
+  padding: 3px !important;
+  min-width: 22px !important;
+  min-height: 22px !important;
   box-sizing: border-box !important;
-  background: var(--gc-terminal-copy-btn-bg) !important;
-  border: 1px solid var(--gc-terminal-copy-btn-border) !important;
-  border-radius: 6px !important;
-  color: var(--gc-terminal-copy-btn-icon) !important;
-  font-size: 12px !important;
+  background: none !important;
+  border: 0 !important;
+  border-radius: 4px !important;
+  box-shadow: none !important;
+  color: var(--gc-terminal-copy) !important;
+  font-size: 11px !important;
   font-family: "JetBrains Mono", "Fira Code", "Consolas", "SF Mono", monospace !important;
   cursor: pointer !important;
   transform: none !important;
@@ -127,7 +131,8 @@
 .code-preview-content.gc-terminal .code-card-copy i,
 .code-preview-content.gc-terminal .code-copy-btn i {
   color: inherit !important;
-  opacity: 0.95;
+  font-size: 13px !important;
+  opacity: 1;
 }
 
 /* Extra height once copy UI is injected */
@@ -143,37 +148,39 @@
 
 .code-preview-content.gc-terminal .code-card-copy:hover,
 .code-preview-content.gc-terminal .code-copy-btn:hover {
-  background: var(--gc-terminal-copy-btn-bg-hover) !important;
-  border-color: var(--gc-terminal-copy-btn-border-hover) !important;
-  color: var(--gc-terminal-copy-btn-icon) !important;
-  box-shadow: var(--gc-terminal-copy-btn-shadow-hover);
+  background: none !important;
+  border: 0 !important;
+  color: var(--gc-terminal-copy-hover) !important;
+  box-shadow: none !important;
   transform: none !important;
 }
 
 .code-preview-content.gc-terminal .code-card-copy:active,
 .code-preview-content.gc-terminal .code-copy-btn:active {
-  background: var(--gc-terminal-copy-btn-bg-hover) !important;
+  background: none !important;
   filter: brightness(0.92);
   transform: none !important;
 }
 
+/* Feedback after a click: the icon itself turns green or red, since the button
+   no longer has a surface to tint. */
 .code-preview-content.gc-terminal .code-card-copy.success,
 .code-preview-content.gc-terminal .code-copy-btn.success,
 .code-preview-content.gc-terminal .code-card-copy.copied,
 .code-preview-content.gc-terminal .code-copy-btn.copied {
-  background: var(--gc-terminal-copy-btn-bg-success) !important;
-  border-color: var(--gc-terminal-copy-btn-border-success) !important;
-  color: var(--gc-terminal-copy-btn-icon-success) !important;
-  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.35);
+  background: none !important;
+  border: 0 !important;
+  color: var(--gc-terminal-copy-success) !important;
+  box-shadow: none !important;
   transform: none !important;
 }
 
 .code-preview-content.gc-terminal .code-card-copy.error,
 .code-preview-content.gc-terminal .code-copy-btn.error {
-  background: var(--gc-terminal-copy-btn-bg-error) !important;
-  border-color: var(--gc-terminal-copy-btn-border-error) !important;
-  color: var(--gc-terminal-copy-btn-icon-error) !important;
-  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.35);
+  background: none !important;
+  border: 0 !important;
+  color: var(--gc-terminal-copy-error) !important;
+  box-shadow: none !important;
   transform: none !important;
 }
 

@@ -3,111 +3,76 @@ id: 2
 title: Getting Started
 description: "Get started with Cypht. Learn about the architecture, system requirements, installation steps, and initial configuration to set up your self-hosted email client."
 layout: section/documentation
+format: md
+toc_labels:
+  architecture: Architecture
+  prerequisites: Prerequisites
+  setup: Configuration
+  modules: Module Ecosystem
+nav_prev:
+  label: Introduction
+  url: /documentation/introduction
+nav_next:
+  label: Interfaces
+  url: /documentation/interfaces
 ---
 
-<div class="doc-content-left col mx-xl-3">
-    <div class="doc-page-header">
-        <h3>Getting Started</h3>
-    </div>
+## The Architecture of Digital Freedom {#architecture}
 
-    <div id="architecture" class="doc-section">
-        <div class="doc-section-header">
-            <a href="#overview">The Architecture of Digital Freedom</a>
-        </div>
-        <span class="doc-section-text">
-            Welcome to the <strong>Cypht</strong> ecosystem. If you're reading this, you've chosen to reclaim control over your data. Unlike traditional email clients (Outlook, Thunderbird) or centralized webmails (Gmail), Cypht was designed as a <strong>server-side modular aggregator</strong>.
-        </span>
-        <span class="doc-section-text">
-            This means Cypht doesn't just "read" your emails; it synthesizes, organizes, and presents them in a unified interface without permanently storing your messages on its own server (unless configured otherwise). It's an ultra-lightweight gateway between you and your multiple digital identities.
-        </span>
-    </div>
+Welcome to the **Cypht** ecosystem. If you're reading this, you've chosen to reclaim control over your data. Unlike
+traditional email clients (Outlook, Thunderbird) or centralized webmails (Gmail), Cypht was designed as a
+**server-side modular aggregator**.
 
-    <div id="prerequisites" class="doc-section">
-        <div class="doc-section-header">
-            <a href="#prerequisites">Step Zero: Environment Setup</a>
-        </div>
-        <span class="doc-section-text">
-            Before exploring the interface, Cypht must be deployed on a web server (Apache/Nginx) with PHP. This process is technical and requires specific prerequisites.
-        </span>
-        <div class="tip-card tip-warning">
-            <span class="tip-warning-text"><i class="bi bi-exclamation-triangle"></i> Haven't installed Cypht yet?</span>
-            <p class="mb-2">Don't attempt to configure your accounts now. Follow our step-by-step installation protocol first: <a href="/install" class="text-link">Access Technical Installation Guide</a></p>
-        </div>
-    </div>
+This means Cypht doesn't just "read" your emails; it synthesizes, organizes, and presents them in a unified interface
+without permanently storing your messages on its own server (unless configured otherwise). It's an ultra-lightweight
+gateway between you and your multiple digital identities.
 
-    <div id="setup" class="doc-section">
-        <div class="doc-section-header">
-            <a href="#setup">Detailed Configuration: Your First Steps</a>
-        </div>
-        <span class="doc-section-text">
-            Follow these steps to get your Cypht instance configured and ready to use.
-        </span>
+## Step Zero : Environment Setup {#prerequisites}
 
-        <div class="doc-subsection-header">
-            <a href="#first_connection">1. First Connection</a>
-        </div>
-        <p>Once installation is complete, you'll land on the profile creation page. Here, privacy is paramount: the password you choose encrypts your settings in the local database. If you lose this password, no one can recover your linked account access, we don't offer "email resets" for security reasons.</p>
+Before exploring the interface, Cypht must be deployed on a web server (Apache/Nginx) with PHP. This process is
+technical and requires specific prerequisites.
 
-        <div class="doc-subsection-header">
-            <a href="#adding_accounts">2. Adding Data Sources (Accounts)</a>
-        </div>
-        <p>To bring your interface to life, go to the <strong>"Settings"</strong> menu then <strong>"Accounts"</strong>. Cypht excels in versatility:</p>
+:::warning
+**Haven't installed Cypht yet?** Don't attempt to configure your accounts now. Follow our step-by-step installation
+protocol first : [Access Technical Installation Guide](/install)
+:::
 
-        <ul>
-            <li><strong>SMPT/IMAP/JMAP (Servers)</strong></li>
-            <li><strong>Feed RSS</strong></li>
-            <li><strong>EWS Server</strong></li>
-            <li><strong>LDAP/Server</strong></li>
-        </ul>
+## Detailed Configuration : Your First Steps {#setup}
 
-        <p>For some service providers (Gmail, Outlook, Office365), specific information is required in your configuration file (.env for Cypht 2.x.x or hm3.ini for Cypht 1.4.x). How to get them page missing.</p>
+Follow these steps to get your Cypht instance configured and ready to use.
 
-        <ul class="mb-0 mt-2">
-            <li><code class="me-2">SERVICE_CLIENT_ID</code> <span>Your application client ID</span</li>
-            <li><code class="me-2">SERVICE_CLIENT_SECRET</code> <span>Your application client secret</span</li>
-            <li><code class="me-2">SERVICE_CLIENT_URI</code> <span>Your application redirect URI</span</li>
-        </ul>
-    </div>
+### 1. First Connection {#first_connection}
 
-    <div id="modules" class="doc-section">
-        <div class="doc-section-header">
-            <a href="#modules" class="text-link">The Module Ecosystem</a>
-        </div>
-        <span class="doc-section-text">
-            Cypht is "Lean" by default minimalist. To extend it, explore the <a href="/modules" class="text-link">modules</a> tab. You can activate various modules to enhance functionality in your <code>.env</code> file.
-        </span>
+Once installation is complete, you'll land on the profile creation page. Here, privacy is paramount : the password you
+choose encrypts your settings in the local database. If you lose this password, no one can recover your linked account
+access, we don't offer "email resets" for security reasons.
 
-        <ul>
-            <li><strong>Notes Module:</strong> Keep quick memos and reminders</li>
-            <li><strong>Advanced Search Module:</strong> Complex queries on email headers</li>
-            <li><strong>Themes Module:</strong> Adapt the interface (Dark Mode, compact themes, etc.)</li>
-        </ul>
-    </div>
+### 2. Adding Data Sources (Accounts) {#adding_accounts}
 
-    <nav-pagination
-        prev-label="Introduction"
-        prev-url="/documentation/introduction"
-        next-label="Interfaces"
-        next-url="/documentation/interfaces">
-    </nav-pagination>
+To bring your interface to life, go to the **"Settings"** menu then **"Accounts"**. Cypht excels in versatility :
 
-</div>
+- **SMPT/IMAP/JMAP (Servers)**
+- **Feed RSS**
+- **EWS Server**
+- **LDAP/Server**
 
-<div class="doc-content-right d-none d-xl-flex col-xl-2">
-    <div class="dc-ctr-content">
-        <div class="dc-ctr-header">
-            <p class="dc-ctr-header-title">
-                <svg aria-hidden="true" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M4 5h12M4 12h16M4 19h8" color="currentColor"/></svg>
-                On this page
-            </p>
-        </div>
-        <nav>
-            <ul id="dc-ctr-nav">
-                <li><a href="#architecture" class="active">Architecture</a></li>
-                <li><a href="#prerequisites">Prerequisites</a></li>
-                <li><a href="#setup">Configuration</a></li>
-                <li><a href="#modules">Module Ecosystem</a></li>
-            </ul>
-        </nav>
-    </div>
-</div>
+For some service providers (Gmail, Outlook, Office365), specific information is required in your configuration file
+(.env for Cypht 2.x.x or hm3.ini for Cypht 1.4.x). How to get them page missing.
+
+`SERVICE_CLIENT_ID`
+: Your application client ID
+
+`SERVICE_CLIENT_SECRET`
+: Your application client secret
+
+`SERVICE_CLIENT_URI`
+: Your application redirect URI
+
+## The Module Ecosystem {#modules}
+
+Cypht is "Lean" by default minimalist. To extend it, explore the [modules](/modules) tab. You can activate various
+modules to enhance functionality in your `.env` file.
+
+- **Notes Module :** Keep quick memos and reminders
+- **Advanced Search Module :** Complex queries on email headers
+- **Themes Module :** Adapt the interface (Dark Mode, compact themes, etc.)
